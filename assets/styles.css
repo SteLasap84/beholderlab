@@ -31,7 +31,7 @@ body{
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:.75rem 0; }
 .brand{ display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--fg); font-weight:650; letter-spacing:.2px; }
-.logo{ width:28px; height:28px; }
+.logo{ width:36px; height:36px; }
 
 .nav{ display:flex; gap:1rem; list-style:none; margin:0; padding:0; }
 .nav a{ color:var(--muted); text-decoration:none; padding:.5rem .6rem; border-radius:.6rem; }
@@ -84,7 +84,7 @@ body{
 @keyframes fadeUp{ from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
 
 .hero-logo{
-  width: clamp(90px, 14vw, 140px);
+  width: clamp(110px, 16vw, 170px);
   filter: drop-shadow(0 6px 20px rgba(0,212,255,.25));
   animation: logoFloat 6s ease-in-out infinite;
 }
