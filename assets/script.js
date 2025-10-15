@@ -79,7 +79,7 @@ if (y) y.textContent = new Date().getFullYear();
       if (p.y<0||p.y>h) p.vy *= -1;
 
       const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.2);
-      g.addColorStop(0,'rgba(0,212,255,0.9)');   // turchese
+      g.addColorStop(0,'rgba(0,212,255,0.9)');    // turchese
       g.addColorStop(1,'rgba(181,109,255,0.85)'); // viola
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
@@ -87,5 +87,7 @@ if (y) y.textContent = new Date().getFullYear();
 
     requestAnimationFrame(step);
   }
+
+  // avvia il loop
   step();
 })();
