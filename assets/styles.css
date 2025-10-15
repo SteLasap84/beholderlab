@@ -1,7 +1,7 @@
 
 :root{
   /* Palette aggiornata (coerente col logo turchese-viola) */
-  --bg:#181d27;          /* blu-notte */
+  --bg:#1e2330;          /* blu-notte */
   --bg2:#1b1338;         /* viola scuro */
   --fg:#e6e6e6;
   --muted:#b9c0ca;
@@ -18,7 +18,7 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   line-height:1.6;
   color:var(--fg);
-  background: radial-gradient(1200px 800px at 10% -10%, #212838, var(--bg)) fixed;
+  background: radial-gradient(1200px 800px at 10% -10%, #2a3145, var(--bg)) fixed;
 }
 
 .container{ width:min(1100px,92%); margin:0 auto; }
