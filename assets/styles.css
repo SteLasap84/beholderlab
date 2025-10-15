@@ -1,0 +1,79 @@
+
+:root {
+  --bg: #0b0e14;
+  --fg: #e6e6e6;
+  --muted: #b9c0ca;
+  --accent: #7aa2ff;
+  --card: #121722;
+  --card-border: #1b2231;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.6;
+  color: var(--fg);
+  background: radial-gradient(1200px 800px at 10% -10%, #151a24, var(--bg)) fixed;
+}
+
+.container { width: min(1100px, 92%); margin: 0 auto; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(11,14,20,0.75); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--card-border);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--fg); font-weight: 650; letter-spacing: .2px; }
+.logo { width: 28px; height: 28px; }
+
+.nav { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+.nav a { color: var(--muted); text-decoration: none; padding: .5rem .6rem; border-radius: .6rem; }
+.nav a:hover, .nav a.active { color: var(--fg); background: #121722; }
+
+.nav-toggle { display: none; }
+
+@media (max-width: 760px) {
+  .nav { display: none; flex-direction: column; background: var(--card); padding: .5rem; border: 1px solid var(--card-border); position: absolute; right: 4%; top: 52px; border-radius: .8rem; }
+  .nav.show { display: flex; }
+  .nav-toggle { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .7rem; border: 1px solid var(--card-border); border-radius: .6rem; background: #0f1420; color: var(--fg); }
+}
+
+.hero { display: grid; place-items: center; min-height: 52vh; text-align: center; padding: 4rem 0 2rem; }
+.hero h1 { font-size: clamp(2rem, 3.6vw, 3rem); margin: 0 0 .6rem; letter-spacing: .5px; }
+.hero p { color: var(--muted); max-width: 62ch; margin: 0 auto 1.2rem; }
+
+.btn { display: inline-block; padding: .7rem 1rem; border-radius: .8rem; border: 1px solid var(--card-border); background: linear-gradient(180deg,#1a2030,#121722); color: var(--fg); text-decoration: none; font-weight: 600; }
+.btn:hover { transform: translateY(-1px); }
+
+.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin: 2rem 0 3rem; }
+.card { background: var(--card); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1rem 1.1rem; }
+.card h2 { margin-top: .2rem; margin-bottom: .2rem; }
+.card p { color: var(--muted); }
+.card-link { text-decoration: none; }
+
+.lede { color: var(--muted); max-width: 68ch; }
+
+.people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1rem; margin: 1rem 0 2rem; }
+.person { background: var(--card); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1rem; }
+.person img { width: 100%; border-radius: .8rem; border: 1px solid var(--card-border); }
+.role { color: var(--muted); margin-top: 0; }
+
+.accordions details { background: var(--card); border: 1px solid var(--card-border); border-radius: .8rem; padding: .8rem 1rem; margin: .7rem 0; }
+.accordions summary { cursor: pointer; }
+
+.publist { line-height: 1.8; }
+.publist .authors { font-weight: 600; }
+.publist .title { font-style: italic; }
+.publist a { color: var(--accent); text-decoration: none; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; margin-bottom: 1rem; }
+.contact-form { background: var(--card); border: 1px solid var(--card-border); padding: 1rem; border-radius: .8rem; display: grid; gap: .7rem; }
+.contact-form label { display: grid; gap: .4rem; }
+.contact-form input, .contact-form textarea { width: 100%; padding: .6rem .7rem; border-radius: .6rem; border: 1px solid var(--card-border); background: #0f1420; color: var(--fg); }
+.form-note { color: var(--muted); font-size: .9rem; }
+
+.site-footer { border-top: 1px solid var(--card-border); margin-top: 3rem; }
+.footer-inner { padding: 1rem 0 2rem; color: var(--muted); }
