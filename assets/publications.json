@@ -34,7 +34,8 @@
     "doi": "10.3389/fpsyg.2025.1576681",
     "link": "https://doi.org/10.3389/fpsyg.2025.1576681",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"
+    ],
     "project": "Miscellaneous"
   },
   {
@@ -45,18 +46,20 @@
     "doi": "10.3389/fpsyg.2019.02587",
     "link": "https://doi.org/10.3389/fpsyg.2019.02587",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"
+    ],
     "project": "Miscellaneous"
   },
   {
     "authors": "Doricchi F.; Pellegrino M.; Marson F.; Pinto M.; Caratelli L.; Cestari V.; Rossi-Arnaud C.; Lasaponara S.",
     "year": 2020,
-    "title": "Deconstructing reorienting of attention: Cue predictiveness modulates the inhibition of the no-target side and the hemispheric distribution of the p1 response to invalid targets",
+    "title": "Deconstructing reorienting of attention: Cue predictiveness modulates the inhibition of the no-target side and the hemispheric distribution of the P1 response to invalid targets",
     "venue": "Journal of Cognitive Neuroscience",
     "doi": "10.1162/jocn_a_01534",
     "link": "https://doi.org/10.1162/jocn_a_01534",
     "pdf": "",
-    "tech": [],
+    "tech": ["EEG"
+    ],
     "project": "Attention"
   },
   {
@@ -70,7 +73,7 @@
     "tech": [
       "Behavioural study"
     ],
-    "project": "Attention"
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Costanzi M.; Cianfanelli B.; Santirocchi A.; Lasaponara S.; Spataro P.; Rossi-Arnaud C.; Cestari V.",
@@ -80,7 +83,8 @@
     "doi": "10.3390/jpm11040241",
     "link": "https://doi.org/10.3390/jpm11040241",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"
+    ],
     "project": "Miscellaneous"
   },
   {
@@ -91,7 +95,8 @@
     "doi": "10.1093/cercor/bhab043",
     "link": "https://doi.org/10.1093/cercor/bhab043",
     "pdf": "",
-    "tech": [],
+    "tech": ["Neuropsychological Patients"
+    ],
     "project": "Miscellaneous"
   },
   {
@@ -116,8 +121,9 @@
     "doi": "10.1162/jocn_a_02240",
     "link": "https://doi.org/10.1162/jocn_a_02240",
     "pdf": "",
-    "tech": [],
-    "project": "Miscellaneous"
+    "tech": ["fMRI"
+    ],
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Doricchi F.; Lasaponara S.; Pazzaglia M.; Silvetti M.",
@@ -127,8 +133,9 @@
     "doi": "10.1016/j.plrev.2022.07.001",
     "link": "https://doi.org/10.1016/j.plrev.2022.07.001",
     "pdf": "",
-    "tech": [],
-    "project": "Belief"
+    "tech": ["Review/Meta-analysis"
+    ],
+    "project": ["Belief", "Predictive Coding"]
   },
   {
     "authors": "Lasaponara S.; D’Onofrio M.; Pinto M.; Dragone A.; Menicagli D.; Bueti D.; De Lucia M.; Tomaiuolo F.; Doricchi F.",
@@ -142,7 +149,7 @@
       "Neuropsychological Patients",
       "EEG"
     ],
-    "project": "Attention"
+    "project": ["Attention", "Predictive Coding"]
   },
   {
     "authors": "Pinto M.; Pellegrino M.; Marson F.; Lasaponara S.; Cestari V.; D'Onofrio M.; Doricchi F.",
@@ -152,8 +159,8 @@
     "doi": "10.1016/j.cortex.2020.10.020",
     "link": "https://doi.org/10.1016/j.cortex.2020.10.020",
     "pdf": "",
-    "tech": [],
-    "project": "Miscellaneous"
+    "tech": ["Behavioural study"],
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Silvetti M.; Lasaponara S.; Lecce F.; Dragone A.; Macaluso E.; Doricchi F.",
@@ -164,7 +171,6 @@
     "link": "https://doi.org/10.1093/cercor/bhv208",
     "pdf": "",
     "tech": [
-      "Neuropsychological Patients",
       "fMRI"
     ],
     "project": "Attention"
@@ -177,7 +183,8 @@
     "doi": "10.1016/j.cortex.2015.05.029",
     "link": "https://doi.org/10.1016/j.cortex.2015.05.029",
     "pdf": "",
-    "tech": [],
+    "tech": ["EEG"
+    ],
     "project": "Attention"
   },
   {
@@ -197,7 +204,7 @@
   {
     "authors": "Lasaponara S.; Pinto M.; Aiello M.; Tomaiuolo F.; Doricchi F.",
     "year": 2019,
-    "title": "The hemispheric distribution of _-band eeg activity during orienting of attention in patients with reduced awareness of the left side of space (Spatial neglect)",
+    "title": "The hemispheric distribution of alpha-band EEG activity during orienting of attention in patients with reduced awareness of the left side of space (Spatial neglect)",
     "venue": "Journal of Neuroscience",
     "doi": "10.1523/JNEUROSCI.2206-18.2019",
     "link": "https://doi.org/10.1523/JNEUROSCI.2206-18.2019",
@@ -216,7 +223,7 @@
     "doi": "10.1016/j.actpsy.2019.102887",
     "link": "https://doi.org/10.1016/j.actpsy.2019.102887",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Spatial representation of number/time magnitudes"
   },
   {
@@ -227,7 +234,7 @@
     "doi": "10.1016/j.cognition.2019.04.032",
     "link": "https://doi.org/10.1016/j.cognition.2019.04.032",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Spatial representation of number/time magnitudes"
   },
   {
@@ -238,7 +245,7 @@
     "doi": "10.1016/bs.pbr.2018.10.017",
     "link": "https://doi.org/10.1016/bs.pbr.2018.10.017",
     "pdf": "",
-    "tech": [],
+    "tech": ["EEG"],
     "project": "Miscellaneous"
   },
   {
@@ -250,19 +257,19 @@
     "link": "https://doi.org/10.3390/brainsci15020183",
     "pdf": "",
     "tech": [
-      "Neuropsychological Patients"
+      "Review/Meta-analysis"
     ],
     "project": "Miscellaneous"
   },
   {
     "authors": "Doricchi F.; Lasaponara S.; Pazzaglia M.; Silvetti M.",
     "year": 2023,
-    "title": "Anticipatory and target related “match/mismatch” activities of the TPJ: Reply to comments on “Left and right temporal-parietal junctions (TPJs) as “match/mismatch” hedonic machines: A unifying account of TPJ function”",
+    "title": "Anticipatory and target-related “match/mismatch” activities of the TPJ: Reply to comments on “Left and right temporal-parietal junctions (TPJs) as “match/mismatch” hedonic machines: A unifying account of TPJ function”",
     "venue": "Physics of Life Reviews",
     "doi": "10.1016/j.plrev.2023.07.015",
     "link": "https://doi.org/10.1016/j.plrev.2023.07.015",
     "pdf": "",
-    "tech": [],
+    "tech": ["Review/Meta-analysis"],
     "project": "Belief"
   },
   {
@@ -273,7 +280,7 @@
     "doi": "10.3758/s13414-023-02746-w",
     "link": "https://doi.org/10.3758/s13414-023-02746-w",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Attention"
   },
   {
@@ -284,9 +291,7 @@
     "doi": "10.1016/j.neuropsychologia.2011.05.012",
     "link": "https://doi.org/10.1016/j.neuropsychologia.2011.05.012",
     "pdf": "",
-    "tech": [
-      "Neuropsychological Patients",
-      "EEG"
+    "tech": ["EEG"
     ],
     "project": "Attention"
   },
@@ -312,7 +317,7 @@
     "link": "https://doi.org/10.1016/j.cortex.2014.12.009",
     "pdf": "",
     "tech": [
-      "Neuropsychological Patients"
+      "fMRI"
     ],
     "project": "Attention"
   },
@@ -324,10 +329,10 @@
     "doi": "10.1016/j.cortex.2017.12.015",
     "link": "https://doi.org/10.1016/j.cortex.2017.12.015",
     "pdf": "",
-    "tech": [
+    "tech": ["EEG",
       "Behavioural study"
     ],
-    "project": "Attention"
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Lasaponara S.; Fortunato G.; Dragone A.; Pellegrino M.; Marson F.; Silvetti M.; Pinto M.; D'Onofrio M.; Doricchi F.",
@@ -350,7 +355,7 @@
     "doi": "10.2147/NSS.S520737",
     "link": "https://doi.org/10.2147/NSS.S520737",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Miscellaneous"
   },
   {
@@ -361,7 +366,7 @@
     "doi": "10.3389/fnhum.2017.00282",
     "link": "https://doi.org/10.3389/fnhum.2017.00282",
     "pdf": "",
-    "tech": [],
+    "tech": ["EEG"],
     "project": "Miscellaneous"
   },
   {
@@ -372,7 +377,7 @@
     "doi": "10.3390/medicina57030215",
     "link": "https://doi.org/10.3390/medicina57030215",
     "pdf": "",
-    "tech": [],
+    "tech": ["Review/Meta-analysis"],
     "project": "Miscellaneous"
   },
   {
@@ -397,9 +402,9 @@
     "link": "https://doi.org/10.1016/j.neuropsychologia.2017.03.010",
     "pdf": "",
     "tech": [
-      "Neuropsychological Patients"
+      "EEG"
     ],
-    "project": "Attention"
+    "project": ["Attention", "Predictive Coding"]
   },
   {
     "authors": "Thellung di Courtelary E.; Scozia G.; Lasaponara S.; Aguzzetti G.; Doricchi F.; Conversi D.",
@@ -409,7 +414,7 @@
     "doi": "10.3390/brainsci14010078",
     "link": "https://doi.org/10.3390/brainsci14010078",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Miscellaneous"
   },
   {
@@ -423,7 +428,7 @@
     "tech": [
       "Behavioural study"
     ],
-    "project": "Attention"
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Dragone A.; Lasaponara S.; Pinto M.; Rotondaro F.; De Luca M.; Doricchi F.",
@@ -449,7 +454,7 @@
     "tech": [
       "Neuropsychological Patients"
     ],
-    "project": "Miscellaneous"
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Ben-Soussan T.D.; Mauro F.; Lasaponara S.; Glicksohn J.; Marson F.; Berkovich-Ohana A.",
@@ -459,7 +464,7 @@
     "doi": "10.1016/bs.pbr.2018.10.023",
     "link": "https://doi.org/10.1016/bs.pbr.2018.10.023",
     "pdf": "",
-    "tech": [],
+    "tech": ["EEG"],
     "project": "Miscellaneous"
   },
   {
@@ -470,7 +475,7 @@
     "doi": "10.3758/s13414-010-0082-6",
     "link": "https://doi.org/10.3758/s13414-010-0082-6",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Attention"
   },
   {
@@ -481,7 +486,7 @@
     "doi": "10.3390/brainsci11050528",
     "link": "https://doi.org/10.3390/brainsci11050528",
     "pdf": "",
-    "tech": [],
+    "tech": ["Review/Meta-analysis"],
     "project": "Miscellaneous"
   },
   {
@@ -492,7 +497,7 @@
     "doi": "10.1016/j.neuron.2012.07.019",
     "link": "https://doi.org/10.1016/j.neuron.2012.07.019",
     "pdf": "",
-    "tech": [],
+    "tech": ["fMRI"],
     "project": "Spatial representation of number/time magnitudes"
   },
   {
@@ -503,9 +508,7 @@
     "doi": "10.1016/j.neuroimage.2010.03.002",
     "link": "https://doi.org/10.1016/j.neuroimage.2010.03.002",
     "pdf": "",
-    "tech": [
-      "Behavioural study",
-      "EEG"
+    "tech": ["EEG"
     ],
     "project": "Attention"
   },
@@ -518,7 +521,7 @@
     "link": "https://doi.org/10.3390/brainsci12050640",
     "pdf": "",
     "tech": [
-      "Neuropsychological Patients"
+      "Neuropsychological Patients", "Single Case"
     ],
     "project": "Miscellaneous"
   },
@@ -530,7 +533,7 @@
     "doi": "10.1016/j.neunet.2022.10.004",
     "link": "https://doi.org/10.1016/j.neunet.2022.10.004",
     "pdf": "",
-    "tech": [],
+    "tech": ["Computational Neuroscience"],
     "project": "Miscellaneous"
   },
   {
@@ -541,7 +544,7 @@
     "doi": "10.1016/j.cortex.2023.10.004",
     "link": "https://doi.org/10.1016/j.cortex.2023.10.004",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study", "Computational Neuroscience"],
     "project": "Attention"
   },
   {
@@ -553,7 +556,7 @@
     "link": "https://doi.org/10.1016/j.cortex.2019.04.018",
     "pdf": "",
     "tech": [
-      "Neuropsychological Patients"
+      "Neuropsychological Patients", "Single Case"
     ],
     "project": "Miscellaneous"
   },
@@ -578,7 +581,7 @@
     "doi": "10.1016/j.cortex.2023.03.009",
     "link": "https://doi.org/10.1016/j.cortex.2023.03.009",
     "pdf": "",
-    "tech": [],
+    "tech": ["Behavioural study"],
     "project": "Spatial representation of number/time magnitudes"
   },
   {
@@ -589,7 +592,7 @@
     "doi": "10.3758/s13414-024-02862-1",
     "link": "https://doi.org/10.3758/s13414-024-02862-1",
     "pdf": "",
-    "tech": [],
-    "project": "Attention"
+    "tech": ["Behavioural study"],
+    "project": "Spatial representation of number/time magnitudes"
   }
 ]
