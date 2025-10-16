@@ -12,17 +12,46 @@
   <link rel="icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/assets/styles.css">
   <style>
-    /* Mini-styles per filtri e badge */
-    .pub-filters{margin:.75rem 0 1rem}
-    .filter-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.4rem 0}
-    .chip,.tag-btn,.btn-clear{border:1px solid currentColor;background:transparent;padding:.18rem .6rem;border-radius:999px;cursor:pointer;font-size:.9rem;line-height:1.2}
-    .chip.is-active,.tag-btn.is-active{outline:2px solid currentColor}
-    .tag-badges{display:flex;gap:.35rem;flex-wrap:wrap;margin:.35rem 0 0}
-    .tag-badges .badge{border:1px solid currentColor;border-radius:999px;padding:.1rem .5rem;font-size:.75rem;opacity:.9}
-    .pub[hidden]{display:none!important}
-    .pub-count{opacity:.7;font-size:.9rem}
-    .group-label{font-weight:600}
-  </style>
+  /* --- FILTRI (Year, Technique, Project) --- */
+  .pub-filters{margin:.75rem 0 1rem}
+  .filter-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.4rem 0}
+  
+  .chip,.tag-btn,.btn-clear{
+    border:1px solid #70b7ff;          /* celeste tenue */
+    color:#b8dcff;                     /* testo celeste chiaro */
+    background:transparent;
+    padding:.2rem .6rem;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:.9rem;
+    line-height:1.2;
+    transition:all .2s ease;
+  }
+
+  .chip:hover,.tag-btn:hover{
+    background:#70b7ff22;              /* leggero bagliore */
+    color:#ffffff;
+  }
+
+  .chip.is-active,.tag-btn.is-active{
+    background:#70b7ff;
+    color:#0e1a2b;                     /* testo scuro su sfondo chiaro */
+    border-color:#70b7ff;
+  }
+
+  .tag-badges .badge{
+    border:1px solid #70b7ff;
+    color:#70b7ff;
+    border-radius:999px;
+    padding:.1rem .5rem;
+    font-size:.75rem;
+    opacity:.95;
+  }
+
+  .pub-count{opacity:.7;font-size:.9rem}
+  .group-label{font-weight:600}
+</style>
+
 </head>
 
 <body>
