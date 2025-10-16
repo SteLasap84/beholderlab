@@ -13,44 +13,123 @@
   <link rel="stylesheet" href="/assets/styles.css">
   <script defer src="/assets/script.js"></script>
 </head>
+
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/"><img src="/assets/logo-placeholder.svg" alt="Beholder Lab logo" class="logo"> <span>Beholder Lab</span></a>
+    <a class="brand" href="/">
+      <img src="/assets/beholderlogo.svg" alt="Beholder Lab logo" class="logo">
+      <span>Beholder Lab</span>
+    </a>
     <nav aria-label="Primary">
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
       <ul id="nav" class="nav">
         <li><a href="/index.html">Home</a></li>
         <li><a href="/people.html">People</a></li>
         <li><a href="/research.html">Research</a></li>
-        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/publications.html" aria-current="page">Publications</a></li>
         <li><a href="/media.html">Media</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
 </header>
+
 <main class="container">
+  <h1>Publications</h1>
+  <p class="lede">Selected papers and preprints by the Beholder Lab.</p>
 
-<h1>Publications</h1>
-<p class="lede">Selected papers and preprints. Add your entries below.</p>
+  <!-- 🔹 Barra dei filtri -->
+  <div class="pub-filters" aria-label="Filter publications by tag">
+    <div class="filter-row">
+      <strong>Filter by:</strong>
+      <div id="tag-filter" class="tag-filter" role="group" aria-label="Tags"></div>
+      <button type="button" id="clear-filters" class="btn-clear" hidden>Clear</button>
+    </div>
+  </div>
 
-<ul class="publist">
-  <li>
-    <span class="authors">Lasaponara, S., et al.</span> (2025).
-    <span class="title">Why Do We Sleep Differently? Temperament, Sleep, and Affect</span>.
-    <span class="venue">Journal TBD</span>.
-    <a href="#" class="doi">DOI</a> • <a href="#" class="pdf">PDF</a>
-  </li>
-  <!-- Add more entries -->
-</ul>
-
+  <!-- 🔹 Qui il JS caricherà automaticamente le pubblicazioni -->
+  <div id="pub-root" data-json="/assets/publications.json"></div>
 </main>
+
 <footer class="site-footer">
   <div class="container footer-inner">
     <p>© <span id="year"></span> Beholder Lab • Sapienza University of Rome</p>
-    <p><a href="/contact.html">Contact</a> • <a href="mailto:info@beholderlab.it">info@beholderlab.it</a></p>
+    <p>
+      <a href="/contact.html">Contact</a> •
+      <a href="mailto:info@beholderlab.it">info@beholderlab.it</a>
+    </p>
   </div>
 </footer>
+
+<!-- ✅ Script per caricare publications.json -->
+<script>
+(function () {
+  const root = document.getElementById('pub-root');
+  if (!root) return;
+  const jsonUrl = root.dataset.json || '/assets/publications.json';
+
+  fetch(jsonUrl)
+    .then(r => r.json())
+    .then(pub => {
+      const ul = document.createElement('ul');
+      ul.className = 'publist';
+      pub.sort((a,b) => (b.year || 0) - (a.year || 0)).forEach(p => {
+        const li = document.createElement('li');
+        li.className = 'pub';
+        li.setAttribute('data-year', p.year || '');
+        li.setAttribute('data-tags', (p.tags || []).join(','));
+        li._tags = p.tags || [];
+
+        const link = p.link ? 
+          `<a class="title" itemprop="headline" href="${p.link}" target="_blank" rel="noopener">${p.title}</a>.`
+          : `<span class="title">${p.title}</span>.`;
+
+        const doi = p.doi
+          ? `<a href="https://doi.org/${p.doi.replace(/^https?:\/\/doi\\.org\\//,'')}"
+               class="doi"
+               itemprop="identifier"
+               target="_blank"
+               rel="noopener"
+               title="https://doi.org/${p.doi}">DOI</a>`
+          : '';
+
+        const pdf = p.pdf ? ` • <a href="${p.pdf}" class="pdf" itemprop="url">PDF</a>` : '';
+
+        li.innerHTML = `
+          <article itemscope itemtype="https://schema.org/ScholarlyArticle">
+            <span class="authors" itemprop="author">${p.authors}</span> (${p.year}).
+            ${link}
+            <span class="venue" itemprop="isPartOf">${p.venue}</span>.
+            ${doi}${pdf}
+            <ul class="tags"></ul>
+          </article>
+        `;
+
+        const tagUl = li.querySelector('.tags');
+        (p.tags || []).forEach(t => {
+          if (t.startsWith('project:')) {
+            const slug = t.split(':')[1];
+            tagUl.innerHTML += `<li><a class="tag is-project" href="/research.html#${slug}" data-tag="${t}">${slug.replace(/-/g,' ')}</a></li>`;
+          } else {
+            const label = t.replace(/^tech:/,'').replace(/^topic:/,'').replace(/-/g,' ')
+                            .replace(/\b\w/g, c => c.toUpperCase());
+            tagUl.innerHTML += `<li><button class="tag" data-tag="${t}">${label}</button></li>`;
+          }
+        });
+
+        ul.appendChild(li);
+      });
+
+      root.replaceWith(ul);
+      document.dispatchEvent(new Event('publist:rendered'));
+    })
+    .catch(err => {
+      console.error('Error loading publications:', err);
+      root.innerHTML = '<p>Unable to load publications.</p>';
+    });
+})();
+</script>
+
 </body>
 </html>
