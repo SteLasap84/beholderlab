@@ -11,6 +11,18 @@
   <meta property="og:locale" content="en_US">
   <link rel="icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* Mini-styles per filtri e badge */
+    .pub-filters{margin:.75rem 0 1rem}
+    .filter-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.4rem 0}
+    .chip,.tag-btn,.btn-clear{border:1px solid currentColor;background:transparent;padding:.18rem .6rem;border-radius:999px;cursor:pointer;font-size:.9rem;line-height:1.2}
+    .chip.is-active,.tag-btn.is-active{outline:2px solid currentColor}
+    .tag-badges{display:flex;gap:.35rem;flex-wrap:wrap;margin:.35rem 0 0}
+    .tag-badges .badge{border:1px solid currentColor;border-radius:999px;padding:.1rem .5rem;font-size:.75rem;opacity:.9}
+    .pub[hidden]{display:none!important}
+    .pub-count{opacity:.7;font-size:.9rem}
+    .group-label{font-weight:600}
+  </style>
 </head>
 
 <body>
@@ -38,12 +50,21 @@
   <h1>Publications</h1>
   <p class="lede">Selected papers and preprints by the Beholder Lab.</p>
 
-  <!-- Filtro -->
-  <div class="pub-filters" aria-label="Filter publications by tag">
+  <!-- FILTRI -->
+  <div class="pub-filters" aria-label="Filter publications">
     <div class="filter-row">
-      <strong>Filter by:</strong>
-      <div id="tag-filter" class="tag-filter" role="group" aria-label="Tags"></div>
+      <span class="group-label">Year:</span>
+      <div id="year-filter" class="year-filter" role="group" aria-label="Year"></div>
+    </div>
+    <div class="filter-row">
+      <span class="group-label">Technique:</span>
+      <div id="tech-filter" class="tech-filter" role="group" aria-label="Technique"></div>
+    </div>
+    <div class="filter-row">
+      <span class="group-label">Project:</span>
+      <div id="proj-filter" class="proj-filter" role="group" aria-label="Project"></div>
       <button type="button" id="clear-filters" class="btn-clear" hidden>Clear</button>
+      <span id="pub-count" class="pub-count"></span>
     </div>
   </div>
 
@@ -60,181 +81,214 @@
   </div>
 </footer>
 
-<!-- Renderer + Filtri (standalone) -->
 <script>
 (function () {
-  // ---------- Helpers ----------
-  const pretty = (t) => t.replace(/^tech:/,'')
-                         .replace(/^topic:/,'')
-                         .replace(/-/g,' ')
-                         .replace(/\b\w/g, c => c.toUpperCase());
-
-  // ---------- Render publications from JSON ----------
   const root = document.getElementById('pub-root');
   if (!root) return;
   const jsonUrl = root.dataset.json || './assets/publications.json';
 
-  fetch(jsonUrl)
-    .then(r => {
-      if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + jsonUrl);
-      return r.json();
-    })
-    .then(pub => {
-      if (!Array.isArray(pub) || pub.length === 0) {
-        root.innerHTML = '<p style="opacity:.8">No publications found.</p>';
-        return;
-      }
+  // ---- Vocabolari ufficiali ----
+  const TECH = [
+    "Review/Meta-analysis","Behavioural study","Single Case","Neuropsychological Patients",
+    "EEG","TMS","fMRI","fNIRS","Pupillometry","Computational Neuroscience"
+  ];
+  const PROJ = [
+    "Attention","Belief","Predictive Coding","Spatial representation of number/time magnitudes","Miscellaneous"
+  ];
 
-      const ul = document.createElement('ul');
-      ul.className = 'publist';
+  // ---- Auto-mapping se tech/project mancano nel JSON ----
+  function inferTech(p){
+    const s = ((p.title||'')+' '+(p.venue||'')).toLowerCase();
+    const out = new Set();
 
-      pub.sort((a,b) => (b.year||0) - (a.year||0)).forEach(p => {
-        const li = document.createElement('li');
-        li.className = 'pub';
-        li.setAttribute('data-year', p.year || '');
-        li.setAttribute('data-tags', (p.tags||[]).join(','));
-        li._tags = p.tags || [];
+    if (/(meta[-\s]?analysis|systematic review|umbrella review|ale meta[-\s]?analysis)/.test(s)) out.add("Review/Meta-analysis");
+    if (/(single[-\s]?case|case report)/.test(s)) out.add("Single Case");
+    if (/(patient|patients|lesion|stroke|neuropsycholog|neglect|parkinson|tbi|brain injury)/.test(s)) out.add("Neuropsychological Patients");
 
-        const titleHTML = p.link
-          ? `<a class="title" itemprop="headline" href="${p.link}" target="_blank" rel="noopener">${p.title || ''}</a>.`
-          : `<span class="title" itemprop="headline">${p.title || ''}</span>.`;
+    if (/\beeg\b|electroencephal|event[-\s]?related potential|erp\b/.test(s)) out.add("EEG");
+    if (/\btms\b|transcranial magnetic/.test(s)) out.add("TMS");
+    if (/\bfmri\b|functional magnetic resonance/.test(s)) out.add("fMRI");
+    if (/\bfnirs\b|near[-\s]?infrared|nirs\b/.test(s)) out.add("fNIRS");
+    if (/pupil|pupill/.test(s)) out.add("Pupillometry");
+    if (/model(ing|led|s)?|computational|reinforcement learning|q-?learning|bayesian|drift[-\s]?diffusion|hmm\b/.test(s)) out.add("Computational Neuroscience");
 
-        const doiHTML = p.doi
-          ? `<a href="https://doi.org/${p.doi.replace(/^https?:\/\/doi\.org\//,'')}"
-               class="doi" itemprop="identifier" target="_blank" rel="noopener"
-               title="https://doi.org/${p.doi.replace(/^https?:\/\/doi\.org\//,'')}">DOI</a>`
-          : '';
+    // Behavioural: se è studio sperimentale e non è solo review
+    if (!out.has("Review/Meta-analysis") && /(task|trial|reaction time|rt\b|participants?|experiment|behavioral|behavioural)/.test(s)) {
+      out.add("Behavioural study");
+    }
 
-        const pdfHTML = p.pdf ? ` • <a href="${p.pdf}" class="pdf" itemprop="url">PDF</a>` : '';
+    // Se nulla riconosciuto, lascia vuoto (potrai compilarlo a mano)
+    return Array.from(out);
+  }
 
-        li.innerHTML = `
-          <article itemscope itemtype="https://schema.org/ScholarlyArticle">
-            <span class="authors" itemprop="author">${p.authors || ''}</span> (${p.year || ''}).
-            ${titleHTML}
-            <span class="venue" itemprop="isPartOf">${p.venue || ''}</span>.
-            ${doiHTML}${pdfHTML}
-            <ul class="tags"></ul>
-          </article>
-        `;
+  function inferProject(p){
+    const s = ((p.title||'')+' '+(p.venue||'')).toLowerCase();
 
-        const tagUl = li.querySelector('.tags');
-        (p.tags || []).forEach(t => {
-          if (t.startsWith('project:')) {
-            const slug = t.split(':')[1];
-            tagUl.insertAdjacentHTML('beforeend',
-              `<li><a class="tag is-project" href="/research.html#${slug}" data-tag="${t}">${slug.replace(/-/g,' ')}</a></li>`);
-          } else {
-            tagUl.insertAdjacentHTML('beforeend',
-              `<li><button type="button" class="tag" data-tag="${t}">${pretty(t)}</button></li>`);
-          }
-        });
+    if (/attention|orienting|alerting|posner|ant\b|vigilance|attentional/.test(s)) return "Attention";
+    if (/belief|confirmation|update|updating|fake news|confidence|tpj\b|mentalizing|theory of mind/.test(s)) return "Belief";
+    if (/predictive|prediction|priors?|prediction error|bayesian/.test(s)) return "Predictive Coding";
+    if (/snarc|space[-\s]number|number magnitude|numerical|time|temporal|mental time|stearc|spatial representation/.test(s))
+      return "Spatial representation of number/time magnitudes";
+    return "Miscellaneous";
+  }
 
-        ul.appendChild(li);
-      });
+  // ---- Render ----
+  fetch(jsonUrl).then(r=>{
+    if(!r.ok) throw new Error('HTTP '+r.status+' for '+jsonUrl);
+    return r.json();
+  }).then(list=>{
+    // normalizza + integra campi
+    list.forEach(p=>{
+      // usa year del JSON (già presente)
+      // tecnica/progetto: usa se presenti, altrimenti inferisci
+      let tech = [];
+      if (Array.isArray(p.tech)) tech = p.tech.slice();
+      else if (p.tech && typeof p.tech === 'string') tech = [p.tech];
+      else tech = inferTech(p);
 
-      root.replaceWith(ul);
+      let project = [];
+      if (Array.isArray(p.project)) project = p.project.slice();
+      else if (p.project && typeof p.project === 'string') project = [p.project];
+      else project = [inferProject(p)];
 
-      // dopo il render, attiva i filtri
-      initTagFilters();
-    })
-    .catch(err => {
-      console.error('Error loading publications:', err);
-      root.innerHTML = `
-        <p style="opacity:.8">
-          Unable to load publications.<br>
-          <small>Check that <code>${jsonUrl}</code> exists and is publicly reachable.</small>
-        </p>`;
+      p._tech = tech.filter(t => TECH.includes(t));
+      p._project = project.filter(pr => PROJ.includes(pr));
     });
 
-  // ---------- Tag Filter UI ----------
-  function initTagFilters() {
-    const pubList = document.querySelector('.publist');
-    const items = Array.from(pubList.querySelectorAll('.pub'));
-    const filterHost = document.getElementById('tag-filter');
+    // costruisci lista
+    const ul = document.createElement('ul');
+    ul.className = 'publist';
+
+    list.sort((a,b)=>(b.year||0)-(a.year||0)).forEach(p=>{
+      const li = document.createElement('li');
+      li.className = 'pub';
+      li.dataset.year = p.year || '';
+      li.dataset.tech = (p._tech||[]).join('|');
+      li.dataset.project = (p._project||[]).join('|');
+
+      const titleHTML = p.link
+        ? `<a class="title" itemprop="headline" href="${p.link}" target="_blank" rel="noopener">${p.title||''}</a>.`
+        : `<span class="title" itemprop="headline">${p.title||''}</span>.`;
+
+      const doiHTML = p.doi
+        ? `<a href="https://doi.org/${p.doi.replace(/^https?:\/\/doi\.org\//,'')}" class="doi" itemprop="identifier" target="_blank" rel="noopener">DOI</a>`
+        : '';
+
+      const pdfHTML = p.pdf ? ` • <a href="${p.pdf}" class="pdf" itemprop="url">PDF</a>` : '';
+
+      li.innerHTML = `
+        <article itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="authors" itemprop="author">${p.authors||''}</span> (${p.year||''}).
+          ${titleHTML}
+          <span class="venue" itemprop="isPartOf">${p.venue||''}</span>. ${doiHTML}${pdfHTML}
+          <div class="tag-badges">
+            ${(p._tech||[]).map(t=>`<span class="badge">${t}</span>`).join('')}
+            ${(p._project||[]).map(pr=>`<span class="badge">${pr}</span>`).join('')}
+          </div>
+        </article>
+      `;
+      ul.appendChild(li);
+    });
+
+    root.replaceWith(ul);
+    initFilters(list);
+  }).catch(err=>{
+    console.error(err);
+    root.innerHTML = `<p style="opacity:.8">Unable to load publications.<br><small>Check <code>${jsonUrl}</code>.</small></p>`;
+  });
+
+  // ---- Filtri ----
+  function initFilters(list){
+    const items = Array.from(document.querySelectorAll('.publist .pub'));
+    const yearHost = document.getElementById('year-filter');
+    const techHost = document.getElementById('tech-filter');
+    const projHost = document.getElementById('proj-filter');
     const clearBtn = document.getElementById('clear-filters');
+    const countEl = document.getElementById('pub-count');
 
-    // Raccogli tag (escludi project:)
-    const tagSet = new Set();
-    items.forEach(li => {
-      const raw = (li.getAttribute('data-tags') || '').split(',').map(s => s.trim()).filter(Boolean);
-      raw.forEach(t => { if (!t.startsWith('project:')) tagSet.add(t); });
-      li._tags = raw;
+    // Years
+    const years = Array.from(new Set(list.map(p=>p.year).filter(Boolean))).sort((a,b)=>b-a);
+    yearHost.innerHTML = `<button type="button" class="chip is-active" data-year="">All</button>` +
+      years.map(y=>`<button type="button" class="chip" data-year="${y}">${y}</button>`).join('');
+
+    // Technique buttons (nell'ordine definito)
+    techHost.innerHTML = TECH.map(t=>`<button type="button" class="tag-btn" data-tech="${t}">${t}</button>`).join('');
+
+    // Project buttons (nell'ordine definito)
+    projHost.innerHTML = PROJ.map(p=>`<button type="button" class="tag-btn" data-proj="${p}">${p}</button>`).join('');
+
+    // Stato
+    let activeYear = null;
+    const activeTech = new Set();
+    const activeProj = new Set();
+
+    // Interazioni
+    yearHost.addEventListener('click', e=>{
+      const b=e.target.closest('button.chip'); if(!b) return;
+      yearHost.querySelectorAll('.chip').forEach(x=>x.classList.remove('is-active'));
+      b.classList.add('is-active');
+      activeYear = b.dataset.year || null;
+      apply();
+    });
+    techHost.addEventListener('click', e=>{
+      const b=e.target.closest('button.tag-btn'); if(!b) return;
+      const t=b.dataset.tech;
+      if(activeTech.has(t)){activeTech.delete(t); b.classList.remove('is-active');}
+      else {activeTech.add(t); b.classList.add('is-active');}
+      apply();
+    });
+    projHost.addEventListener('click', e=>{
+      const b=e.target.closest('button.tag-btn'); if(!b) return;
+      const p=b.dataset.proj;
+      if(activeProj.has(p)){activeProj.delete(p); b.classList.remove('is-active');}
+      else {activeProj.add(p); b.classList.add('is-active');}
+      apply();
+    });
+    clearBtn.addEventListener('click', ()=>{
+      activeYear=null; activeTech.clear(); activeProj.clear();
+      yearHost.querySelectorAll('.chip').forEach((b,i)=>b.classList.toggle('is-active', i===0));
+      techHost.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('is-active'));
+      projHost.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('is-active'));
+      apply();
     });
 
-    // Crea bottoni
-    const frag = document.createDocumentFragment();
-    Array.from(tagSet).sort().forEach(tag => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'tag pill';
-      btn.dataset.tag = tag;
-      btn.setAttribute('aria-pressed', 'false');
-      btn.textContent = pretty(tag);
-      frag.appendChild(btn);
-    });
-    filterHost.innerHTML = '';
-    filterHost.appendChild(frag);
+    function apply(){
+      const yearOn = !!activeYear;
+      const techOn = activeTech.size>0;
+      const projOn = activeProj.size>0;
+      clearBtn.hidden = !(yearOn||techOn||projOn);
 
-    // Stato attivo
-    const active = new Set();
-    filterHost.addEventListener('click', (e) => {
-      const btn = e.target.closest('button.tag.pill');
-      if (!btn) return;
-      const tag = btn.dataset.tag;
-      if (active.has(tag)) {
-        active.delete(tag);
-        btn.setAttribute('aria-pressed', 'false');
-        btn.classList.remove('is-active');
-      } else {
-        active.add(tag);
-        btn.setAttribute('aria-pressed', 'true');
-        btn.classList.add('is-active');
-      }
-      applyFilter();
-    });
-
-    clearBtn.addEventListener('click', () => {
-      active.clear();
-      filterHost.querySelectorAll('button.tag.pill').forEach(b => {
-        b.setAttribute('aria-pressed', 'false');
-        b.classList.remove('is-active');
+      let shown=0;
+      items.forEach(li=>{
+        const okYear = !yearOn || String(li.dataset.year)===String(activeYear);
+        const liTech = (li.dataset.tech||'').split('|').filter(Boolean);
+        const liProj = (li.dataset.project||'').split('|').filter(Boolean);
+        const okTech = !techOn || Array.from(activeTech).every(t=>liTech.includes(t));
+        const okProj = !projOn || Array.from(activeProj).every(p=>liProj.includes(p));
+        const show = okYear && okTech && okProj;
+        li.hidden = !show;
+        if (show) shown++;
       });
-      applyFilter();
-    });
+      countEl.textContent = shown ? `${shown} result${shown>1?'s':''}` : '0 results';
 
-    function applyFilter() {
-      const on = active.size > 0;
-      clearBtn.hidden = !on;
-      items.forEach(li => {
-        if (!on) { li.hidden = false; return; }
-        const ok = Array.from(active).every(t => (li._tags||[]).includes(t));
-        li.hidden = !ok;
-      });
-      // Aggiorna querystring
+      // URL condivisibile
       const params = new URLSearchParams(window.location.search);
-      if (on) params.set('tags', Array.from(active).join(','));
-      else params.delete('tags');
-      history.replaceState(null, '', window.location.pathname + (params.toString() ? `?${params}` : ''));
+      if(yearOn) params.set('year', activeYear); else params.delete('year');
+      if(techOn) params.set('tech', Array.from(activeTech).join('|')); else params.delete('tech');
+      if(projOn) params.set('proj', Array.from(activeProj).join('|')); else params.delete('proj');
+      history.replaceState(null,'',window.location.pathname + (params.toString()?`?${params}`:''));
     }
 
-    // Inizializza da URL
-    const qs = new URLSearchParams(window.location.search).get('tags');
-    if (qs) {
-      qs.split(',').forEach(tag => {
-        const btn = filterHost.querySelector(`button[data-tag="${CSS.escape(tag)}"]`);
-        if (btn) {
-          active.add(tag);
-          btn.setAttribute('aria-pressed', 'true');
-          btn.classList.add('is-active');
-        }
-      });
-      applyFilter();
-    }
+    // Init da URL
+    const params = new URLSearchParams(window.location.search);
+    const qy = params.get('year'); if(qy){ activeYear=qy; yearHost.querySelectorAll('.chip').forEach(b=>b.classList.toggle('is-active', b.dataset.year===qy)); }
+    const qt = (params.get('tech')||'').split('|').filter(Boolean);
+    const qp = (params.get('proj')||'').split('|').filter(Boolean);
+    qt.forEach(t=>{ const btn=techHost.querySelector(`[data-tech="${CSS.escape(t)}"]`); if(btn){activeTech.add(t); btn.classList.add('is-active');} });
+    qp.forEach(p=>{ const btn=projHost.querySelector(`[data-proj="${CSS.escape(p)}"]`); if(btn){activeProj.add(p); btn.classList.add('is-active');} });
+    apply();
   }
 })();
 </script>
-
-<!-- (opzionale) il tuo script globale, se ti serve altrove -->
-<script defer src="/assets/script.js"></script>
 </body>
 </html>
