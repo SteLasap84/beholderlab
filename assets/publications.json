@@ -1,243 +1,17 @@
 [
   {
-    "authors": "Palombo F.; Del Gado F.; Rugolo F.; Lasaponara S.; Busan P.; Tomaiuoli D.; Conversi D.",
-    "year": 2025,
-    "title": "The role of anticipation and neuroticism in developmental stuttering",
-    "venue": "Frontiers in Psychology",
-    "doi": "10.3389/fpsyg.2025.1576681",
-    "pdf": "",
-    "link": "https://doi.org/10.3389/fpsyg.2025.1576681",
-    "tags": []
-  },
-  {
-    "authors": "Scarpelli S.; Spinoni M.; Gorgoni M.; Lasaponara S.; Ciolli P.; Rech F.; Di Muzio M.; Med C.; Benedetti I.P.; Grano C.; De Gennaro L.",
-    "year": 2025,
-    "title": "Dreams and Nightmares in Early Pregnancy: A Comparative Study with a Control Group",
-    "venue": "Nature and Science of Sleep",
-    "doi": "10.2147/NSS.S520737",
-    "pdf": "",
-    "link": "https://doi.org/10.2147/NSS.S520737",
-    "tags": []
-  },
-  {
-    "authors": "Cavallo M.; Lasaponara S.",
-    "year": 2025,
-    "title": "Cognition and Cognitive Training in Patients with Neurodegenerative Diseases",
-    "venue": "Brain Sciences",
-    "doi": "10.3390/brainsci15020183",
-    "pdf": "",
-    "link": "https://doi.org/10.3390/brainsci15020183",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; Pinto M.; Lozito S.; Scozia G.; Pellegrino M.; Presti S.L.; Gazzitano S.; Giove F.; Doricchi F.",
-    "year": 2025,
-    "title": "Changes in Brain Functional Connectivity Underlying the Space–Number Association",
-    "venue": "Journal of Cognitive Neuroscience",
-    "doi": "10.1162/jocn_a_02240",
-    "pdf": "",
-    "link": "https://doi.org/10.1162/jocn_a_02240",
-    "tags": []
-  },
-  {
-    "authors": "Lo Presti S.; Bonavita M.; Piga V.; Lozito S.; Doricchi F.; Lasaponara S.",
-    "year": 2025,
-    "title": "\"Don't stop believing” - Decoding belief dynamics in the brain: An ALE meta-analysis of neural correlates in belief formation and updating",
-    "venue": "Neuroscience and Biobehavioral Reviews",
-    "doi": "10.1016/j.neubiorev.2025.106153",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.neubiorev.2025.106153",
-    "tags": []
-  },
-  {
-    "authors": "Scozia G.; Pinto M.; Lozito S.; Binetti N.; Pazzaglia M.; Lasaponara S.; Doricchi F.",
-    "year": 2024,
-    "title": "The time course of the spatial representation of ‘past’ and ‘future’ concepts: New evidence from the STEARC effect",
-    "venue": "Attention, Perception, and Psychophysics",
-    "doi": "10.3758/s13414-024-02862-1",
-    "pdf": "",
-    "link": "https://doi.org/10.3758/s13414-024-02862-1",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; Scozia G.; Lozito S.; Pinto M.; Conversi D.; Costanzi M.; Vriens T.; Silvetti M.; Doricchi F.",
-    "year": 2024,
-    "title": "Temperament and probabilistic predictive coding in visual-spatial attention",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2023.10.004",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2023.10.004",
-    "tags": []
-  },
-  {
-    "authors": "Thellung di Courtelary E.; Scozia G.; Lasaponara S.; Aguzzetti G.; Doricchi F.; Conversi D.",
-    "year": 2024,
-    "title": "Exploring the Interplay of Working Memory, Apathy, and Mood/Emotional Factors",
-    "venue": "Brain Sciences",
-    "doi": "10.3390/brainsci14010078",
-    "pdf": "",
-    "link": "https://doi.org/10.3390/brainsci14010078",
-    "tags": []
-  },
-  {
-    "authors": "Scozia G.; Pinto M.; Lozito S.; Lasaponara S.; Binetti N.; Pazzaglia M.; Doricchi F.",
-    "year": 2023,
-    "title": "Space is a late heuristic of elapsing time: New evidence from the STEARC effect",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2023.03.009",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2023.03.009",
-    "tags": []
-  },
-  {
-    "authors": "Scozia G.; Pinto M.; Pellegrino M.; Lozito S.; Pia L.; Lasaponara S.; Doricchi F.",
-    "year": 2023,
-    "title": "How time gets spatial: factors determining the stability and instability of the mental time line",
-    "venue": "Attention, Perception, and Psychophysics",
-    "doi": "10.3758/s13414-023-02746-w",
-    "pdf": "",
-    "link": "https://doi.org/10.3758/s13414-023-02746-w",
-    "tags": []
-  },
-  {
-    "authors": "Doricchi F.; Lasaponara S.; Pazzaglia M.; Silvetti M.",
-    "year": 2023,
-    "title": "Anticipatory and target related “match/mismatch” activities of the TPJ: Reply to comments on “Left and right temporal-parietal junctions (TPJs) as “match/mismatch” hedonic machines: A unifying account of TPJ function”",
-    "venue": "Physics of Life Reviews",
-    "doi": "10.1016/j.plrev.2023.07.015",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.plrev.2023.07.015",
-    "tags": []
-  },
-  {
-    "authors": "Silvetti M.; Lasaponara S.; Daddaoua N.; Horan M.; Gottlieb J.",
-    "year": 2023,
-    "title": "A Reinforcement Meta-Learning framework of executive function and information demand",
-    "venue": "Neural Networks",
-    "doi": "10.1016/j.neunet.2022.10.004",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.neunet.2022.10.004",
-    "tags": []
-  },
-  {
-    "authors": "Tomaiuolo F.; Raffa G.; Campana S.; Garufi G.; Lasaponara S.; Voci L.; Cardali S.M.; Germanò A.; Doricchi F.; Petrides M.",
-    "year": 2022,
-    "title": "Splenial Callosal Disconnection in Right Hemianopic Patients Induces Right Visual-Spatial Neglect",
-    "venue": "Brain Sciences",
-    "doi": "10.3390/brainsci12050640",
-    "pdf": "",
-    "link": "https://doi.org/10.3390/brainsci12050640",
-    "tags": []
-  },
-  {
-    "authors": "Doricchi F.; Lasaponara S.; Pazzaglia M.; Silvetti M.",
-    "year": 2022,
-    "title": "Left and right temporal-parietal junctions (TPJs) as “match/mismatch” hedonic machines: A unifying account of TPJ function",
-    "venue": "Physics of Life Reviews",
-    "doi": "10.1016/j.plrev.2022.07.001",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.plrev.2022.07.001",
-    "tags": []
-  },
-  {
-    "authors": "Tomaiuolo F.; Campana S.; Voci L.; Lasaponara S.; Doricchi F.; Petrides M.",
-    "year": 2021,
-    "title": "The Precentral Insular Cortical Network for Speech Articulation",
-    "venue": "Cerebral Cortex",
-    "doi": "10.1093/cercor/bhab043",
-    "pdf": "",
-    "link": "https://doi.org/10.1093/cercor/bhab043",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; Fortunato G.; Conversi D.; Pellegrino M.; Pinto M.; Collins D.L.; Tomaiuolo F.; Doricchi F.",
-    "year": 2021,
-    "title": "Pupil dilation during orienting of attention and conscious detection of visual targets in patients with left spatial neglect",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2020.10.021",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2020.10.021",
-    "tags": []
-  },
-  {
-    "authors": "Pellegrino M.; Pinto M.; Marson F.; Lasaponara S.; Doricchi F.",
-    "year": 2021,
-    "title": "Perceiving numerosity does not cause automatic shifts of spatial attention",
-    "venue": "Experimental Brain Research",
-    "doi": "10.1007/s00221-021-06185-7",
-    "pdf": "",
-    "link": "https://doi.org/10.1007/s00221-021-06185-7",
-    "tags": []
-  },
-  {
-    "authors": "Pinto M.; Pellegrino M.; Lasaponara S.; Scozia G.; D'Onofrio M.; Raffa G.; Nigro S.; Arnaud C.R.; Tomaiuolo F.; Doricchi F.",
-    "year": 2021,
-    "title": "Number space is made by response space: Evidence from left spatial neglect",
-    "venue": "Neuropsychologia",
-    "doi": "10.1016/j.neuropsychologia.2021.107773",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.neuropsychologia.2021.107773",
-    "tags": []
-  },
-  {
     "authors": "Lasaponara S.; D'Onofrio M.; Pinto M.; Aiello M.; Pellegrino M.; Scozia G.; De Lucia M.; Doricchi F.",
     "year": 2021,
     "title": "Individual EEG profiling of attention deficits in left spatial neglect: A pilot study",
     "venue": "Neuroscience Letters",
     "doi": "10.1016/j.neulet.2021.136097",
-    "pdf": "",
     "link": "https://doi.org/10.1016/j.neulet.2021.136097",
-    "tags": []
-  },
-  {
-    "authors": "Pinto M.; Pellegrino M.; Marson F.; Lasaponara S.; Cestari V.; D'Onofrio M.; Doricchi F.",
-    "year": 2021,
-    "title": "How to trigger and keep stable directional Space–Number Associations (SNAs)",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2020.10.020",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2020.10.020",
-    "tags": []
-  },
-  {
-    "authors": "Costanzi M.; Cianfanelli B.; Santirocchi A.; Lasaponara S.; Spataro P.; Rossi-Arnaud C.; Cestari V.",
-    "year": 2021,
-    "title": "Forgetting unwanted memories: Active forgetting and implications for the development of psychological disorders",
-    "venue": "Journal of Personalized Medicine",
-    "doi": "10.3390/jpm11040241",
-    "pdf": "",
-    "link": "https://doi.org/10.3390/jpm11040241",
-    "tags": []
-  },
-  {
-    "authors": "Doricchi F.; Pinto M.; Pellegrino M.; Marson F.; Aiello M.; Campana S.; Tomaiuolo F.; Lasaponara S.",
-    "year": 2021,
-    "title": "Deficits of hierarchical predictive coding in left spatial neglect",
-    "venue": "Brain Communications",
-    "doi": "10.1093/braincomms/fcab111",
-    "pdf": "",
-    "link": "https://doi.org/10.1093/braincomms/fcab111",
-    "tags": []
-  },
-  {
-    "authors": "Marson F.; Lasaponara S.; Cavallo M.",
-    "year": 2021,
-    "title": "A scoping review of neuromodulation techniques in neurodegenerative diseases: A useful tool for clinical practice?",
-    "venue": "Medicina (Lithuania)",
-    "doi": "10.3390/medicina57030215",
-    "pdf": "",
-    "link": "https://doi.org/10.3390/medicina57030215",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; Marson F.; Doricchi F.; Cavallo M.",
-    "year": 2021,
-    "title": "A scoping review of cognitive training in neurodegenerative diseases via computerized and virtual reality tools: What we know so far",
-    "venue": "Brain Sciences",
-    "doi": "10.3390/brainsci11050528",
-    "pdf": "",
-    "link": "https://doi.org/10.3390/brainsci11050528",
-    "tags": []
+    "tech": [
+      "Neuropsychological Patients",
+      "EEG"
+    ],
+    "project": "Attention"
   },
   {
     "authors": "Lasaponara S.; Pinto M.; Pellegrino M.; Caratelli L.; Rossi-Arnaud C.; Cestari V.; Costanzi M.; Doricchi F.",
@@ -245,39 +19,23 @@
     "title": "Spatial uncertainty improves the distribution of visual attention and the availability of sensory information for conscious report",
     "venue": "Experimental Brain Research",
     "doi": "10.1007/s00221-020-05862-3",
-    "pdf": "",
     "link": "https://doi.org/10.1007/s00221-020-05862-3",
-    "tags": []
+    "pdf": "",
+    "tech": [
+      "Behavioural study"
+    ],
+    "project": "Attention"
   },
   {
-    "authors": "Lasaponara S.; Pinto M.; Scozia G.; Pellegrino M.; D'Onofrio M.; Isabella R.; Doricchi F.",
-    "year": 2020,
-    "title": "Pre-motor deficits in left spatial neglect: An EEG study on Contingent Negative Variation (CNV) and response-related beta oscillatory activity",
-    "venue": "Neuropsychologia",
-    "doi": "10.1016/j.neuropsychologia.2020.107572",
+    "authors": "Palombo F.; Del Gado F.; Rugolo F.; Lasaponara S.; Busan P.; Tomaiuoli D.; Conversi D.",
+    "year": 2025,
+    "title": "The role of anticipation and neuroticism in developmental stuttering",
+    "venue": "Frontiers in Psychology",
+    "doi": "10.3389/fpsyg.2025.1576681",
+    "link": "https://doi.org/10.3389/fpsyg.2025.1576681",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.neuropsychologia.2020.107572",
-    "tags": []
-  },
-  {
-    "authors": "Doricchi F.; Pellegrino M.; Marson F.; Pinto M.; Caratelli L.; Cestari V.; Rossi-Arnaud C.; Lasaponara S.",
-    "year": 2020,
-    "title": "Deconstructing reorienting of attention: Cue predictiveness modulates the inhibition of the no-target side and the hemispheric distribution of the p1 response to invalid targets",
-    "venue": "Journal of Cognitive Neuroscience",
-    "doi": "10.1162/jocn_a_01534",
-    "pdf": "",
-    "link": "https://doi.org/10.1162/jocn_a_01534",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; Pinto M.; Aiello M.; Tomaiuolo F.; Doricchi F.",
-    "year": 2019,
-    "title": "The hemispheric distribution of _-band eeg activity during orienting of attention in patients with reduced awareness of the left side of space (Spatial neglect)",
-    "venue": "Journal of Neuroscience",
-    "doi": "10.1523/JNEUROSCI.2206-18.2019",
-    "pdf": "",
-    "link": "https://doi.org/10.1523/JNEUROSCI.2206-18.2019",
-    "tags": []
+    "tech": [],
+    "project": "Miscellaneous"
   },
   {
     "authors": "Costanzi M.; Cianfanelli B.; Saraulli D.; Lasaponara S.; Doricchi F.; Cestari V.; Rossi-Arnaud C.",
@@ -285,109 +43,92 @@
     "title": "The Effect of Emotional Valence and Arousal on Visuo-Spatial Working Memory: Incidental Emotional Learning and Memory for Object-Location",
     "venue": "Frontiers in Psychology",
     "doi": "10.3389/fpsyg.2019.02587",
-    "pdf": "",
     "link": "https://doi.org/10.3389/fpsyg.2019.02587",
-    "tags": []
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
   },
   {
-    "authors": "Pellegrino M.; Pinto M.; Marson F.; Lasaponara S.; Rossi-Arnaud C.; Cestari V.; Doricchi F.",
-    "year": 2019,
-    "title": "The Attentional-SNARC effect 16 years later: no automatic space–number association (taking into account finger counting style, imagery vividness, and learning style in 174 participants)",
+    "authors": "Doricchi F.; Pellegrino M.; Marson F.; Pinto M.; Caratelli L.; Cestari V.; Rossi-Arnaud C.; Lasaponara S.",
+    "year": 2020,
+    "title": "Deconstructing reorienting of attention: Cue predictiveness modulates the inhibition of the no-target side and the hemispheric distribution of the p1 response to invalid targets",
+    "venue": "Journal of Cognitive Neuroscience",
+    "doi": "10.1162/jocn_a_01534",
+    "link": "https://doi.org/10.1162/jocn_a_01534",
+    "pdf": "",
+    "tech": [],
+    "project": "Attention"
+  },
+  {
+    "authors": "Pellegrino M.; Pinto M.; Marson F.; Lasaponara S.; Doricchi F.",
+    "year": 2021,
+    "title": "Perceiving numerosity does not cause automatic shifts of spatial attention",
     "venue": "Experimental Brain Research",
-    "doi": "10.1007/s00221-019-05617-9",
+    "doi": "10.1007/s00221-021-06185-7",
+    "link": "https://doi.org/10.1007/s00221-021-06185-7",
     "pdf": "",
-    "link": "https://doi.org/10.1007/s00221-019-05617-9",
-    "tags": []
+    "tech": [
+      "Behavioural study"
+    ],
+    "project": "Attention"
   },
   {
-    "authors": "Pinto M.; Pellegrino M.; Marson F.; Lasaponara S.; Doricchi F.",
-    "year": 2019,
-    "title": "Reconstructing the origins of the space-number association: spatial and number-magnitude codes must be used jointly to elicit spatially organised mental number lines",
-    "venue": "Cognition",
-    "doi": "10.1016/j.cognition.2019.04.032",
+    "authors": "Costanzi M.; Cianfanelli B.; Santirocchi A.; Lasaponara S.; Spataro P.; Rossi-Arnaud C.; Cestari V.",
+    "year": 2021,
+    "title": "Forgetting unwanted memories: Active forgetting and implications for the development of psychological disorders",
+    "venue": "Journal of Personalized Medicine",
+    "doi": "10.3390/jpm11040241",
+    "link": "https://doi.org/10.3390/jpm11040241",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.cognition.2019.04.032",
-    "tags": []
+    "tech": [],
+    "project": "Miscellaneous"
   },
   {
-    "authors": "Ben-Soussan T.D.; Mauro F.; Lasaponara S.; Glicksohn J.; Marson F.; Berkovich-Ohana A.",
-    "year": 2019,
-    "title": "Fully immersed: State absorption and electrophysiological effects of the OVO Whole-Body Perceptual Deprivation chamber",
-    "venue": "Progress in Brain Research",
-    "doi": "10.1016/bs.pbr.2018.10.023",
+    "authors": "Tomaiuolo F.; Campana S.; Voci L.; Lasaponara S.; Doricchi F.; Petrides M.",
+    "year": 2021,
+    "title": "The Precentral Insular Cortical Network for Speech Articulation",
+    "venue": "Cerebral Cortex",
+    "doi": "10.1093/cercor/bhab043",
+    "link": "https://doi.org/10.1093/cercor/bhab043",
     "pdf": "",
-    "link": "https://doi.org/10.1016/bs.pbr.2018.10.023",
-    "tags": []
+    "tech": [],
+    "project": "Miscellaneous"
   },
   {
-    "authors": "Lasaponara S.; Fortunato G.; Dragone A.; Pellegrino M.; Marson F.; Silvetti M.; Pinto M.; D'Onofrio M.; Doricchi F.",
-    "year": 2019,
-    "title": "Expectancy modulates pupil size both during endogenous orienting and during re-orienting of spatial attention: A study with isoluminant stimuli",
-    "venue": "European Journal of Neuroscience",
-    "doi": "10.1111/ejn.14391",
-    "pdf": "",
-    "link": "https://doi.org/10.1111/ejn.14391",
-    "tags": []
-  },
-  {
-    "authors": "Pinto M.; Pellegrino M.; Lasaponara S.; Cestari V.; Doricchi F.",
-    "year": 2019,
-    "title": "Contrasting left/right codes for response selection must not be necessarily associated with contrasting numerical features to get the SNARC",
-    "venue": "Acta Psychologica",
-    "doi": "10.1016/j.actpsy.2019.102887",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.actpsy.2019.102887",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; Glicksohn J.; Mauro F.; Ben-Soussan T.D.",
-    "year": 2019,
-    "title": "Contingent negative variation and P3 modulations following mindful movement training",
-    "venue": "Progress in Brain Research",
-    "doi": "10.1016/bs.pbr.2018.10.017",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/bs.pbr.2018.10.017",
-    "tags": []
-  },
-  {
-    "authors": "Tomaiuolo F.; Campana S.; Cecchetti L.; Galli R.; Zucco G.M.; Lasaponara S.; Doricchi F.",
-    "year": 2019,
-    "title": "Concomitant recovery from left spatial neglect and inflammatory dysfunction of white-matter pathways in a case of acute disseminated encephalo-myelitis (ADEM)",
+    "authors": "Lasaponara S.; Fortunato G.; Conversi D.; Pellegrino M.; Pinto M.; Collins D.L.; Tomaiuolo F.; Doricchi F.",
+    "year": 2021,
+    "title": "Pupil dilation during orienting of attention and conscious detection of visual targets in patients with left spatial neglect",
     "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2019.04.018",
+    "doi": "10.1016/j.cortex.2020.10.021",
+    "link": "https://doi.org/10.1016/j.cortex.2020.10.021",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2019.04.018",
-    "tags": []
+    "tech": [
+      "Neuropsychological Patients",
+      "Pupillometry"
+    ],
+    "project": "Attention"
   },
   {
-    "authors": "Pinto M.; Fattorini E.; Lasaponara S.; D'Onofrio M.; Fortunato G.; Doricchi F.",
-    "year": 2018,
-    "title": "Visualising numerals: An ERPs study with the attentional SNARC task",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2017.12.015",
+    "authors": "Lasaponara S.; Pinto M.; Lozito S.; Scozia G.; Pellegrino M.; Presti S.L.; Gazzitano S.; Giove F.; Doricchi F.",
+    "year": 2025,
+    "title": "Changes in Brain Functional Connectivity Underlying the Space–Number Association",
+    "venue": "Journal of Cognitive Neuroscience",
+    "doi": "10.1162/jocn_a_02240",
+    "link": "https://doi.org/10.1162/jocn_a_02240",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2017.12.015",
-    "tags": []
+    "tech": [],
+    "project": "Miscellaneous"
   },
   {
-    "authors": "Aiello M.; Merola S.; Lasaponara S.; Pinto M.; Tomaiuolo F.; Doricchi F.",
-    "year": 2018,
-    "title": "The influence of visual and phonological features on the hemispheric processing of hierarchical Navon letters",
-    "venue": "Neuropsychologia",
-    "doi": "10.1016/j.neuropsychologia.2017.12.013",
+    "authors": "Doricchi F.; Lasaponara S.; Pazzaglia M.; Silvetti M.",
+    "year": 2022,
+    "title": "Left and right temporal-parietal junctions (TPJs) as “match/mismatch” hedonic machines: A unifying account of TPJ function",
+    "venue": "Physics of Life Reviews",
+    "doi": "10.1016/j.plrev.2022.07.001",
+    "link": "https://doi.org/10.1016/j.plrev.2022.07.001",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.neuropsychologia.2017.12.013",
-    "tags": []
-  },
-  {
-    "authors": "Dragone A.; Lasaponara S.; Pinto M.; Rotondaro F.; De Luca M.; Doricchi F.",
-    "year": 2018,
-    "title": "Expectancy modulates pupil size during endogenous orienting of spatial attention",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2017.09.011",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2017.09.011",
-    "tags": []
+    "tech": [],
+    "project": "Belief"
   },
   {
     "authors": "Lasaponara S.; D’Onofrio M.; Pinto M.; Dragone A.; Menicagli D.; Bueti D.; De Lucia M.; Tomaiuolo F.; Doricchi F.",
@@ -395,29 +136,24 @@
     "title": "EEG correlates of preparatory orienting, contextual updating, and inhibition of sensory processing in left spatial neglect",
     "venue": "Journal of Neuroscience",
     "doi": "10.1523/JNEUROSCI.2817-17.2018",
-    "pdf": "",
     "link": "https://doi.org/10.1523/JNEUROSCI.2817-17.2018",
-    "tags": []
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients",
+      "EEG"
+    ],
+    "project": "Attention"
   },
   {
-    "authors": "Lasaponara S.; Mauro F.; Carducci F.; Paoletti P.; Tombini M.; Quattrocchi C.C.; Mallio C.A.; Errante Y.; Scarciolla L.; Ben-Soussan T.D.",
-    "year": 2017,
-    "title": "Increased alpha band functional connectivity following the quadrato motor training: A longitudinal study",
-    "venue": "Frontiers in Human Neuroscience",
-    "doi": "10.3389/fnhum.2017.00282",
+    "authors": "Pinto M.; Pellegrino M.; Marson F.; Lasaponara S.; Cestari V.; D'Onofrio M.; Doricchi F.",
+    "year": 2021,
+    "title": "How to trigger and keep stable directional Space–Number Associations (SNAs)",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2020.10.020",
+    "link": "https://doi.org/10.1016/j.cortex.2020.10.020",
     "pdf": "",
-    "link": "https://doi.org/10.3389/fnhum.2017.00282",
-    "tags": []
-  },
-  {
-    "authors": "Lasaponara S.; D’ Onofrio M.; Dragone A.; Pinto M.; Caratelli L.; Doricchi F.",
-    "year": 2017,
-    "title": "Changes in predictive cuing modulate the hemispheric distribution of the P1 inhibitory response to attentional targets",
-    "venue": "Neuropsychologia",
-    "doi": "10.1016/j.neuropsychologia.2017.03.010",
-    "pdf": "",
-    "link": "https://doi.org/10.1016/j.neuropsychologia.2017.03.010",
-    "tags": []
+    "tech": [],
+    "project": "Miscellaneous"
   },
   {
     "authors": "Silvetti M.; Lasaponara S.; Lecce F.; Dragone A.; Macaluso E.; Doricchi F.",
@@ -425,9 +161,13 @@
     "title": "The response of the left ventral attentional system to invalid targets and its implication for the spatial neglect syndrome: A multivariate fmri investigation",
     "venue": "Cerebral Cortex",
     "doi": "10.1093/cercor/bhv208",
-    "pdf": "",
     "link": "https://doi.org/10.1093/cercor/bhv208",
-    "tags": []
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients",
+      "fMRI"
+    ],
+    "project": "Attention"
   },
   {
     "authors": "Lasaponara S.; Dragone A.; Lecce F.; Di Russo F.; Doricchi F.",
@@ -435,39 +175,106 @@
     "title": "The \"serendipitous brain\": Low expectancy and timing uncertainty of conscious events improve awareness of unconscious ones (evidence from the Attentional Blink)",
     "venue": "Cortex",
     "doi": "10.1016/j.cortex.2015.05.029",
-    "pdf": "",
     "link": "https://doi.org/10.1016/j.cortex.2015.05.029",
-    "tags": []
-  },
-  {
-    "authors": "Dragone A.; Lasaponara S.; Silvetti M.; Macaluso E.; Doricchi F.",
-    "year": 2015,
-    "title": "Selective reorienting response of the left hemisphere to invalid visual targets in the right side of space: Relevance for the spatial neglect syndrome",
-    "venue": "Cortex",
-    "doi": "10.1016/j.cortex.2014.12.009",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.cortex.2014.12.009",
-    "tags": []
+    "tech": [],
+    "project": "Attention"
   },
   {
-    "authors": "Bueti D.; Lasaponara S.; Cercignani M.; Macaluso E.",
-    "year": 2012,
-    "title": "Learning about Time: Plastic Changes and Interindividual Brain Differences",
-    "venue": "Neuron",
-    "doi": "10.1016/j.neuron.2012.07.019",
+    "authors": "Lasaponara S.; Pinto M.; Scozia G.; Pellegrino M.; D'Onofrio M.; Isabella R.; Doricchi F.",
+    "year": 2020,
+    "title": "Pre-motor deficits in left spatial neglect: An EEG study on Contingent Negative Variation (CNV) and response-related beta oscillatory activity",
+    "venue": "Neuropsychologia",
+    "doi": "10.1016/j.neuropsychologia.2020.107572",
+    "link": "https://doi.org/10.1016/j.neuropsychologia.2020.107572",
     "pdf": "",
-    "link": "https://doi.org/10.1016/j.neuron.2012.07.019",
-    "tags": []
+    "tech": [
+      "Neuropsychological Patients",
+      "EEG"
+    ],
+    "project": "Miscellaneous"
   },
   {
-    "authors": "Chica A.B.; Lasaponara S.; Chanes L.; Valero-Cabré A.; Doricchi F.; Lupiáñez J.; Bartolomeo P.",
-    "year": 2011,
-    "title": "Spatial attention and conscious perception: The role of endogenous and exogenous orienting",
+    "authors": "Lasaponara S.; Pinto M.; Aiello M.; Tomaiuolo F.; Doricchi F.",
+    "year": 2019,
+    "title": "The hemispheric distribution of _-band eeg activity during orienting of attention in patients with reduced awareness of the left side of space (Spatial neglect)",
+    "venue": "Journal of Neuroscience",
+    "doi": "10.1523/JNEUROSCI.2206-18.2019",
+    "link": "https://doi.org/10.1523/JNEUROSCI.2206-18.2019",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients",
+      "EEG"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Pinto M.; Pellegrino M.; Lasaponara S.; Cestari V.; Doricchi F.",
+    "year": 2019,
+    "title": "Contrasting left/right codes for response selection must not be necessarily associated with contrasting numerical features to get the SNARC",
+    "venue": "Acta Psychologica",
+    "doi": "10.1016/j.actpsy.2019.102887",
+    "link": "https://doi.org/10.1016/j.actpsy.2019.102887",
+    "pdf": "",
+    "tech": [],
+    "project": "Spatial representation of number/time magnitudes"
+  },
+  {
+    "authors": "Pinto M.; Pellegrino M.; Marson F.; Lasaponara S.; Doricchi F.",
+    "year": 2019,
+    "title": "Reconstructing the origins of the space-number association: spatial and number-magnitude codes must be used jointly to elicit spatially organised mental number lines",
+    "venue": "Cognition",
+    "doi": "10.1016/j.cognition.2019.04.032",
+    "link": "https://doi.org/10.1016/j.cognition.2019.04.032",
+    "pdf": "",
+    "tech": [],
+    "project": "Spatial representation of number/time magnitudes"
+  },
+  {
+    "authors": "Lasaponara S.; Glicksohn J.; Mauro F.; Ben-Soussan T.D.",
+    "year": 2019,
+    "title": "Contingent negative variation and P3 modulations following mindful movement training",
+    "venue": "Progress in Brain Research",
+    "doi": "10.1016/bs.pbr.2018.10.017",
+    "link": "https://doi.org/10.1016/bs.pbr.2018.10.017",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Cavallo M.; Lasaponara S.",
+    "year": 2025,
+    "title": "Cognition and Cognitive Training in Patients with Neurodegenerative Diseases",
+    "venue": "Brain Sciences",
+    "doi": "10.3390/brainsci15020183",
+    "link": "https://doi.org/10.3390/brainsci15020183",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Doricchi F.; Lasaponara S.; Pazzaglia M.; Silvetti M.",
+    "year": 2023,
+    "title": "Anticipatory and target related “match/mismatch” activities of the TPJ: Reply to comments on “Left and right temporal-parietal junctions (TPJs) as “match/mismatch” hedonic machines: A unifying account of TPJ function”",
+    "venue": "Physics of Life Reviews",
+    "doi": "10.1016/j.plrev.2023.07.015",
+    "link": "https://doi.org/10.1016/j.plrev.2023.07.015",
+    "pdf": "",
+    "tech": [],
+    "project": "Belief"
+  },
+  {
+    "authors": "Scozia G.; Pinto M.; Pellegrino M.; Lozito S.; Pia L.; Lasaponara S.; Doricchi F.",
+    "year": 2023,
+    "title": "How time gets spatial: factors determining the stability and instability of the mental time line",
     "venue": "Attention, Perception, and Psychophysics",
-    "doi": "10.3758/s13414-010-0082-6",
+    "doi": "10.3758/s13414-023-02746-w",
+    "link": "https://doi.org/10.3758/s13414-023-02746-w",
     "pdf": "",
-    "link": "https://doi.org/10.3758/s13414-010-0082-6",
-    "tags": []
+    "tech": [],
+    "project": "Attention"
   },
   {
     "authors": "Lasaponara S.; Chica A.B.; Lecce F.; Lupianez J.; Doricchi F.",
@@ -475,9 +282,218 @@
     "title": "ERP evidence for selective drop in attentional costs in uncertain environments: Challenging a purely premotor account of covert orienting of attention",
     "venue": "Neuropsychologia",
     "doi": "10.1016/j.neuropsychologia.2011.05.012",
-    "pdf": "",
     "link": "https://doi.org/10.1016/j.neuropsychologia.2011.05.012",
-    "tags": []
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients",
+      "EEG"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Doricchi F.; Pinto M.; Pellegrino M.; Marson F.; Aiello M.; Campana S.; Tomaiuolo F.; Lasaponara S.",
+    "year": 2021,
+    "title": "Deficits of hierarchical predictive coding in left spatial neglect",
+    "venue": "Brain Communications",
+    "doi": "10.1093/braincomms/fcab111",
+    "link": "https://doi.org/10.1093/braincomms/fcab111",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Predictive Coding"
+  },
+  {
+    "authors": "Dragone A.; Lasaponara S.; Silvetti M.; Macaluso E.; Doricchi F.",
+    "year": 2015,
+    "title": "Selective reorienting response of the left hemisphere to invalid visual targets in the right side of space: Relevance for the spatial neglect syndrome",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2014.12.009",
+    "link": "https://doi.org/10.1016/j.cortex.2014.12.009",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Pinto M.; Fattorini E.; Lasaponara S.; D'Onofrio M.; Fortunato G.; Doricchi F.",
+    "year": 2018,
+    "title": "Visualising numerals: An ERPs study with the attentional SNARC task",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2017.12.015",
+    "link": "https://doi.org/10.1016/j.cortex.2017.12.015",
+    "pdf": "",
+    "tech": [
+      "Behavioural study"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Lasaponara S.; Fortunato G.; Dragone A.; Pellegrino M.; Marson F.; Silvetti M.; Pinto M.; D'Onofrio M.; Doricchi F.",
+    "year": 2019,
+    "title": "Expectancy modulates pupil size both during endogenous orienting and during re-orienting of spatial attention: A study with isoluminant stimuli",
+    "venue": "European Journal of Neuroscience",
+    "doi": "10.1111/ejn.14391",
+    "link": "https://doi.org/10.1111/ejn.14391",
+    "pdf": "",
+    "tech": [
+      "Pupillometry"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Scarpelli S.; Spinoni M.; Gorgoni M.; Lasaponara S.; Ciolli P.; Rech F.; Di Muzio M.; Med C.; Benedetti I.P.; Grano C.; De Gennaro L.",
+    "year": 2025,
+    "title": "Dreams and Nightmares in Early Pregnancy: A Comparative Study with a Control Group",
+    "venue": "Nature and Science of Sleep",
+    "doi": "10.2147/NSS.S520737",
+    "link": "https://doi.org/10.2147/NSS.S520737",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Lasaponara S.; Mauro F.; Carducci F.; Paoletti P.; Tombini M.; Quattrocchi C.C.; Mallio C.A.; Errante Y.; Scarciolla L.; Ben-Soussan T.D.",
+    "year": 2017,
+    "title": "Increased alpha band functional connectivity following the quadrato motor training: A longitudinal study",
+    "venue": "Frontiers in Human Neuroscience",
+    "doi": "10.3389/fnhum.2017.00282",
+    "link": "https://doi.org/10.3389/fnhum.2017.00282",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Marson F.; Lasaponara S.; Cavallo M.",
+    "year": 2021,
+    "title": "A scoping review of neuromodulation techniques in neurodegenerative diseases: A useful tool for clinical practice?",
+    "venue": "Medicina (Lithuania)",
+    "doi": "10.3390/medicina57030215",
+    "link": "https://doi.org/10.3390/medicina57030215",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Lo Presti S.; Bonavita M.; Piga V.; Lozito S.; Doricchi F.; Lasaponara S.",
+    "year": 2025,
+    "title": "\"Don't stop believing” - Decoding belief dynamics in the brain: An ALE meta-analysis of neural correlates in belief formation and updating",
+    "venue": "Neuroscience and Biobehavioral Reviews",
+    "doi": "10.1016/j.neubiorev.2025.106153",
+    "link": "https://doi.org/10.1016/j.neubiorev.2025.106153",
+    "pdf": "",
+    "tech": [
+      "Review/Meta-analysis"
+    ],
+    "project": "Belief"
+  },
+  {
+    "authors": "Lasaponara S.; D’ Onofrio M.; Dragone A.; Pinto M.; Caratelli L.; Doricchi F.",
+    "year": 2017,
+    "title": "Changes in predictive cuing modulate the hemispheric distribution of the P1 inhibitory response to attentional targets",
+    "venue": "Neuropsychologia",
+    "doi": "10.1016/j.neuropsychologia.2017.03.010",
+    "link": "https://doi.org/10.1016/j.neuropsychologia.2017.03.010",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Thellung di Courtelary E.; Scozia G.; Lasaponara S.; Aguzzetti G.; Doricchi F.; Conversi D.",
+    "year": 2024,
+    "title": "Exploring the Interplay of Working Memory, Apathy, and Mood/Emotional Factors",
+    "venue": "Brain Sciences",
+    "doi": "10.3390/brainsci14010078",
+    "link": "https://doi.org/10.3390/brainsci14010078",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Pellegrino M.; Pinto M.; Marson F.; Lasaponara S.; Rossi-Arnaud C.; Cestari V.; Doricchi F.",
+    "year": 2019,
+    "title": "The Attentional-SNARC effect 16 years later: no automatic space–number association (taking into account finger counting style, imagery vividness, and learning style in 174 participants)",
+    "venue": "Experimental Brain Research",
+    "doi": "10.1007/s00221-019-05617-9",
+    "link": "https://doi.org/10.1007/s00221-019-05617-9",
+    "pdf": "",
+    "tech": [
+      "Behavioural study"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Dragone A.; Lasaponara S.; Pinto M.; Rotondaro F.; De Luca M.; Doricchi F.",
+    "year": 2018,
+    "title": "Expectancy modulates pupil size during endogenous orienting of spatial attention",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2017.09.011",
+    "link": "https://doi.org/10.1016/j.cortex.2017.09.011",
+    "pdf": "",
+    "tech": [
+      "Pupillometry"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Pinto M.; Pellegrino M.; Lasaponara S.; Scozia G.; D'Onofrio M.; Raffa G.; Nigro S.; Arnaud C.R.; Tomaiuolo F.; Doricchi F.",
+    "year": 2021,
+    "title": "Number space is made by response space: Evidence from left spatial neglect",
+    "venue": "Neuropsychologia",
+    "doi": "10.1016/j.neuropsychologia.2021.107773",
+    "link": "https://doi.org/10.1016/j.neuropsychologia.2021.107773",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Ben-Soussan T.D.; Mauro F.; Lasaponara S.; Glicksohn J.; Marson F.; Berkovich-Ohana A.",
+    "year": 2019,
+    "title": "Fully immersed: State absorption and electrophysiological effects of the OVO Whole-Body Perceptual Deprivation chamber",
+    "venue": "Progress in Brain Research",
+    "doi": "10.1016/bs.pbr.2018.10.023",
+    "link": "https://doi.org/10.1016/bs.pbr.2018.10.023",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Chica A.B.; Lasaponara S.; Chanes L.; Valero-Cabré A.; Doricchi F.; Lupiáñez J.; Bartolomeo P.",
+    "year": 2011,
+    "title": "Spatial attention and conscious perception: The role of endogenous and exogenous orienting",
+    "venue": "Attention, Perception, and Psychophysics",
+    "doi": "10.3758/s13414-010-0082-6",
+    "link": "https://doi.org/10.3758/s13414-010-0082-6",
+    "pdf": "",
+    "tech": [],
+    "project": "Attention"
+  },
+  {
+    "authors": "Lasaponara S.; Marson F.; Doricchi F.; Cavallo M.",
+    "year": 2021,
+    "title": "A scoping review of cognitive training in neurodegenerative diseases via computerized and virtual reality tools: What we know so far",
+    "venue": "Brain Sciences",
+    "doi": "10.3390/brainsci11050528",
+    "link": "https://doi.org/10.3390/brainsci11050528",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Bueti D.; Lasaponara S.; Cercignani M.; Macaluso E.",
+    "year": 2012,
+    "title": "Learning about Time: Plastic Changes and Interindividual Brain Differences",
+    "venue": "Neuron",
+    "doi": "10.1016/j.neuron.2012.07.019",
+    "link": "https://doi.org/10.1016/j.neuron.2012.07.019",
+    "pdf": "",
+    "tech": [],
+    "project": "Spatial representation of number/time magnitudes"
   },
   {
     "authors": "Chica A.B.; Lasaponara S.; Lupiáñez J.; Doricchi F.; Bartolomeo P.",
@@ -485,8 +501,95 @@
     "title": "Exogenous attention can capture perceptual consciousness: ERP and behavioural evidence",
     "venue": "NeuroImage",
     "doi": "10.1016/j.neuroimage.2010.03.002",
-    "pdf": "",
     "link": "https://doi.org/10.1016/j.neuroimage.2010.03.002",
-    "tags": []
+    "pdf": "",
+    "tech": [
+      "Behavioural study",
+      "EEG"
+    ],
+    "project": "Attention"
+  },
+  {
+    "authors": "Tomaiuolo F.; Raffa G.; Campana S.; Garufi G.; Lasaponara S.; Voci L.; Cardali S.M.; Germanò A.; Doricchi F.; Petrides M.",
+    "year": 2022,
+    "title": "Splenial Callosal Disconnection in Right Hemianopic Patients Induces Right Visual-Spatial Neglect",
+    "venue": "Brain Sciences",
+    "doi": "10.3390/brainsci12050640",
+    "link": "https://doi.org/10.3390/brainsci12050640",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Silvetti M.; Lasaponara S.; Daddaoua N.; Horan M.; Gottlieb J.",
+    "year": 2023,
+    "title": "A Reinforcement Meta-Learning framework of executive function and information demand",
+    "venue": "Neural Networks",
+    "doi": "10.1016/j.neunet.2022.10.004",
+    "link": "https://doi.org/10.1016/j.neunet.2022.10.004",
+    "pdf": "",
+    "tech": [],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Lasaponara S.; Scozia G.; Lozito S.; Pinto M.; Conversi D.; Costanzi M.; Vriens T.; Silvetti M.; Doricchi F.",
+    "year": 2024,
+    "title": "Temperament and probabilistic predictive coding in visual-spatial attention",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2023.10.004",
+    "link": "https://doi.org/10.1016/j.cortex.2023.10.004",
+    "pdf": "",
+    "tech": [],
+    "project": "Attention"
+  },
+  {
+    "authors": "Tomaiuolo F.; Campana S.; Cecchetti L.; Galli R.; Zucco G.M.; Lasaponara S.; Doricchi F.",
+    "year": 2019,
+    "title": "Concomitant recovery from left spatial neglect and inflammatory dysfunction of white-matter pathways in a case of acute disseminated encephalo-myelitis (ADEM)",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2019.04.018",
+    "link": "https://doi.org/10.1016/j.cortex.2019.04.018",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Aiello M.; Merola S.; Lasaponara S.; Pinto M.; Tomaiuolo F.; Doricchi F.",
+    "year": 2018,
+    "title": "The influence of visual and phonological features on the hemispheric processing of hierarchical Navon letters",
+    "venue": "Neuropsychologia",
+    "doi": "10.1016/j.neuropsychologia.2017.12.013",
+    "link": "https://doi.org/10.1016/j.neuropsychologia.2017.12.013",
+    "pdf": "",
+    "tech": [
+      "Neuropsychological Patients"
+    ],
+    "project": "Miscellaneous"
+  },
+  {
+    "authors": "Scozia G.; Pinto M.; Lozito S.; Lasaponara S.; Binetti N.; Pazzaglia M.; Doricchi F.",
+    "year": 2023,
+    "title": "Space is a late heuristic of elapsing time: New evidence from the STEARC effect",
+    "venue": "Cortex",
+    "doi": "10.1016/j.cortex.2023.03.009",
+    "link": "https://doi.org/10.1016/j.cortex.2023.03.009",
+    "pdf": "",
+    "tech": [],
+    "project": "Spatial representation of number/time magnitudes"
+  },
+  {
+    "authors": "Scozia G.; Pinto M.; Lozito S.; Binetti N.; Pazzaglia M.; Lasaponara S.; Doricchi F.",
+    "year": 2024,
+    "title": "The time course of the spatial representation of ‘past’ and ‘future’ concepts: New evidence from the STEARC effect",
+    "venue": "Attention, Perception, and Psychophysics",
+    "doi": "10.3758/s13414-024-02862-1",
+    "link": "https://doi.org/10.3758/s13414-024-02862-1",
+    "pdf": "",
+    "tech": [],
+    "project": "Attention"
   }
 ]
