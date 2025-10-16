@@ -11,7 +11,6 @@
   <meta property="og:locale" content="en_US">
   <link rel="icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/assets/styles.css">
-  <script defer src="/assets/script.js"></script>
 </head>
 
 <body>
@@ -39,7 +38,7 @@
   <h1>Publications</h1>
   <p class="lede">Selected papers and preprints by the Beholder Lab.</p>
 
-  <!-- 🔹 Barra dei filtri -->
+  <!-- Filtro -->
   <div class="pub-filters" aria-label="Filter publications by tag">
     <div class="filter-row">
       <strong>Filter by:</strong>
@@ -48,60 +47,72 @@
     </div>
   </div>
 
-  <!-- 🔹 Qui il JS caricherà automaticamente le pubblicazioni -->
-  <div id="pub-root" data-json="/assets/publications.json"></div>
+  <!-- Qui verrà montata la lista -->
+  <div id="pub-root" data-json="./assets/publications.json">
+    <p style="opacity:.8">Loading publications…</p>
+  </div>
 </main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
     <p>© <span id="year"></span> Beholder Lab • Sapienza University of Rome</p>
-    <p>
-      <a href="/contact.html">Contact</a> •
-      <a href="mailto:info@beholderlab.it">info@beholderlab.it</a>
-    </p>
+    <p><a href="/contact.html">Contact</a> • <a href="mailto:stefano.lasaponara@uniroma1.it">info@beholderlab.it</a></p>
   </div>
 </footer>
 
-<!-- ✅ Script per caricare publications.json -->
+<!-- Renderer + Filtri (standalone) -->
 <script>
 (function () {
+  // ---------- Helpers ----------
+  const pretty = (t) => t.replace(/^tech:/,'')
+                         .replace(/^topic:/,'')
+                         .replace(/-/g,' ')
+                         .replace(/\b\w/g, c => c.toUpperCase());
+
+  // ---------- Render publications from JSON ----------
   const root = document.getElementById('pub-root');
   if (!root) return;
-  const jsonUrl = root.dataset.json || '/assets/publications.json';
+  const jsonUrl = root.dataset.json || './assets/publications.json';
 
   fetch(jsonUrl)
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + jsonUrl);
+      return r.json();
+    })
     .then(pub => {
+      if (!Array.isArray(pub) || pub.length === 0) {
+        root.innerHTML = '<p style="opacity:.8">No publications found.</p>';
+        return;
+      }
+
       const ul = document.createElement('ul');
       ul.className = 'publist';
-      pub.sort((a,b) => (b.year || 0) - (a.year || 0)).forEach(p => {
+
+      pub.sort((a,b) => (b.year||0) - (a.year||0)).forEach(p => {
         const li = document.createElement('li');
         li.className = 'pub';
         li.setAttribute('data-year', p.year || '');
-        li.setAttribute('data-tags', (p.tags || []).join(','));
+        li.setAttribute('data-tags', (p.tags||[]).join(','));
         li._tags = p.tags || [];
 
-        const link = p.link ? 
-          `<a class="title" itemprop="headline" href="${p.link}" target="_blank" rel="noopener">${p.title}</a>.`
-          : `<span class="title">${p.title}</span>.`;
+        const titleHTML = p.link
+          ? `<a class="title" itemprop="headline" href="${p.link}" target="_blank" rel="noopener">${p.title || ''}</a>.`
+          : `<span class="title" itemprop="headline">${p.title || ''}</span>.`;
 
-        const doi = p.doi
-          ? `<a href="https://doi.org/${p.doi.replace(/^https?:\/\/doi\\.org\\//,'')}"
-               class="doi"
-               itemprop="identifier"
-               target="_blank"
-               rel="noopener"
-               title="https://doi.org/${p.doi}">DOI</a>`
+        const doiHTML = p.doi
+          ? `<a href="https://doi.org/${p.doi.replace(/^https?:\/\/doi\.org\//,'')}"
+               class="doi" itemprop="identifier" target="_blank" rel="noopener"
+               title="https://doi.org/${p.doi.replace(/^https?:\/\/doi\.org\//,'')}">DOI</a>`
           : '';
 
-        const pdf = p.pdf ? ` • <a href="${p.pdf}" class="pdf" itemprop="url">PDF</a>` : '';
+        const pdfHTML = p.pdf ? ` • <a href="${p.pdf}" class="pdf" itemprop="url">PDF</a>` : '';
 
         li.innerHTML = `
           <article itemscope itemtype="https://schema.org/ScholarlyArticle">
-            <span class="authors" itemprop="author">${p.authors}</span> (${p.year}).
-            ${link}
-            <span class="venue" itemprop="isPartOf">${p.venue}</span>.
-            ${doi}${pdf}
+            <span class="authors" itemprop="author">${p.authors || ''}</span> (${p.year || ''}).
+            ${titleHTML}
+            <span class="venue" itemprop="isPartOf">${p.venue || ''}</span>.
+            ${doiHTML}${pdfHTML}
             <ul class="tags"></ul>
           </article>
         `;
@@ -110,11 +121,11 @@
         (p.tags || []).forEach(t => {
           if (t.startsWith('project:')) {
             const slug = t.split(':')[1];
-            tagUl.innerHTML += `<li><a class="tag is-project" href="/research.html#${slug}" data-tag="${t}">${slug.replace(/-/g,' ')}</a></li>`;
+            tagUl.insertAdjacentHTML('beforeend',
+              `<li><a class="tag is-project" href="/research.html#${slug}" data-tag="${t}">${slug.replace(/-/g,' ')}</a></li>`);
           } else {
-            const label = t.replace(/^tech:/,'').replace(/^topic:/,'').replace(/-/g,' ')
-                            .replace(/\b\w/g, c => c.toUpperCase());
-            tagUl.innerHTML += `<li><button class="tag" data-tag="${t}">${label}</button></li>`;
+            tagUl.insertAdjacentHTML('beforeend',
+              `<li><button type="button" class="tag" data-tag="${t}">${pretty(t)}</button></li>`);
           }
         });
 
@@ -122,14 +133,108 @@
       });
 
       root.replaceWith(ul);
-      document.dispatchEvent(new Event('publist:rendered'));
+
+      // dopo il render, attiva i filtri
+      initTagFilters();
     })
     .catch(err => {
       console.error('Error loading publications:', err);
-      root.innerHTML = '<p>Unable to load publications.</p>';
+      root.innerHTML = `
+        <p style="opacity:.8">
+          Unable to load publications.<br>
+          <small>Check that <code>${jsonUrl}</code> exists and is publicly reachable.</small>
+        </p>`;
     });
+
+  // ---------- Tag Filter UI ----------
+  function initTagFilters() {
+    const pubList = document.querySelector('.publist');
+    const items = Array.from(pubList.querySelectorAll('.pub'));
+    const filterHost = document.getElementById('tag-filter');
+    const clearBtn = document.getElementById('clear-filters');
+
+    // Raccogli tag (escludi project:)
+    const tagSet = new Set();
+    items.forEach(li => {
+      const raw = (li.getAttribute('data-tags') || '').split(',').map(s => s.trim()).filter(Boolean);
+      raw.forEach(t => { if (!t.startsWith('project:')) tagSet.add(t); });
+      li._tags = raw;
+    });
+
+    // Crea bottoni
+    const frag = document.createDocumentFragment();
+    Array.from(tagSet).sort().forEach(tag => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tag pill';
+      btn.dataset.tag = tag;
+      btn.setAttribute('aria-pressed', 'false');
+      btn.textContent = pretty(tag);
+      frag.appendChild(btn);
+    });
+    filterHost.innerHTML = '';
+    filterHost.appendChild(frag);
+
+    // Stato attivo
+    const active = new Set();
+    filterHost.addEventListener('click', (e) => {
+      const btn = e.target.closest('button.tag.pill');
+      if (!btn) return;
+      const tag = btn.dataset.tag;
+      if (active.has(tag)) {
+        active.delete(tag);
+        btn.setAttribute('aria-pressed', 'false');
+        btn.classList.remove('is-active');
+      } else {
+        active.add(tag);
+        btn.setAttribute('aria-pressed', 'true');
+        btn.classList.add('is-active');
+      }
+      applyFilter();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      active.clear();
+      filterHost.querySelectorAll('button.tag.pill').forEach(b => {
+        b.setAttribute('aria-pressed', 'false');
+        b.classList.remove('is-active');
+      });
+      applyFilter();
+    });
+
+    function applyFilter() {
+      const on = active.size > 0;
+      clearBtn.hidden = !on;
+      items.forEach(li => {
+        if (!on) { li.hidden = false; return; }
+        const ok = Array.from(active).every(t => (li._tags||[]).includes(t));
+        li.hidden = !ok;
+      });
+      // Aggiorna querystring
+      const params = new URLSearchParams(window.location.search);
+      if (on) params.set('tags', Array.from(active).join(','));
+      else params.delete('tags');
+      history.replaceState(null, '', window.location.pathname + (params.toString() ? `?${params}` : ''));
+    }
+
+    // Inizializza da URL
+    const qs = new URLSearchParams(window.location.search).get('tags');
+    if (qs) {
+      qs.split(',').forEach(tag => {
+        const btn = filterHost.querySelector(`button[data-tag="${CSS.escape(tag)}"]`);
+        if (btn) {
+          active.add(tag);
+          btn.setAttribute('aria-pressed', 'true');
+          btn.classList.add('is-active');
+        }
+      });
+      applyFilter();
+    }
+  }
 })();
 </script>
 
+<!-- (opzionale) il tuo script globale, se ti serve altrove -->
+<script defer src="/assets/script.js"></script>
 </body>
 </html>
