@@ -145,6 +145,53 @@ body{
   font-weight: 500;
 }
 
+/* ——— People layout ——— */
+.people-grid{
+  max-width: 980px;           /* evita la card “a tutta pagina” */
+  margin-inline: auto;
+}
+
+.people-grid .person{
+  display: grid;
+  grid-template-columns: clamp(120px, 20vw, 220px) 1fr; /* img | testo */
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* Avatar quadrato piccolo, niente deformazioni */
+.people-grid .person > img{
+  width: clamp(120px, 20vw, 220px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Mobile: impila immagine sopra il testo */
+@media (max-width: 720px){
+  .people-grid .person{
+    grid-template-columns: 1fr;
+  }
+  .people-grid .person > img{
+    margin-inline: auto;
+  }
+}
+
+/* ——— Colore link (stesso celeste della mail) ——— */
+:root{ --accent-link: #6EC3FF; } /* regola qui se il tuo “celeste mail” è diverso */
+
+.people-grid .person a,
+.people-grid .person a:visited{
+  color: var(--accent-link);
+  text-decoration: none;
+}
+
+.people-grid .person a:hover{
+  text-decoration: underline;
+  filter: brightness(1.1);
+}
+
+
 .site-footer a:hover {
   text-decoration: underline;
 }
