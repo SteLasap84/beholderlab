@@ -259,3 +259,70 @@ body{
   }
 }
 
+/* Struttura a griglia aggiornata */
+.people-grid .person{
+  display: grid;
+  grid-template-columns: clamp(120px, 20vw, 220px) 1fr;
+  grid-template-areas:
+    "photo name"
+    "links role"
+    ".     bio";
+  column-gap: 2rem;
+  row-gap: 0.75rem;
+}
+
+/* Foto */
+.people-grid .person > img{
+  grid-area: photo;
+}
+
+/* Link subito sotto la foto */
+.people-grid .person > .person-links{
+  grid-area: links;
+  margin: 0.5rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+/* Nome */
+.people-grid .person > h2{
+  grid-area: name;
+  margin: 0;
+}
+
+/* PI + affiliazione subito sotto il nome */
+.people-grid .person > .role{
+  grid-area: role;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.9;
+}
+
+/* Bio allineata alla colonna del nome, non sotto la foto */
+.people-grid .person > .bio{
+  grid-area: bio;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.55;
+  max-width: 75ch;
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .people-grid .person{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "links"
+      "name"
+      "role"
+      "bio";
+  }
+
+  .people-grid .person > img{
+    margin-inline: auto;
+  }
+  .people-grid .person > .person-links{
+    text-align: center;
+  }
+}
+
