@@ -346,3 +346,40 @@ body{
 .people-grid .person > .bio {
   margin-top: 0.4rem;
 }
+
+
+/* === PEOPLE: allineamento stretto nome / ruolo / bio === */
+
+.people-grid .person{
+  grid-template-areas:
+    "photo name"
+    "links role"
+    ".     bio";
+  align-items: start;
+}
+
+/* Nome */
+.people-grid .person > h2{
+  grid-area: name;
+  align-self: start !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.15rem !important;
+}
+
+/* PI + affiliazione subito sotto il nome, senza extra spazio */
+.people-grid .person > .role{
+  grid-area: role;
+  align-self: start !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Bio attaccata al blocco PI */
+.people-grid .person > .bio{
+  grid-area: bio;
+  align-self: start !important;
+  margin-top: 0.4rem !important;
+  margin-bottom: 0 !important;
+}
