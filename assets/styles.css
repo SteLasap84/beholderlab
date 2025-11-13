@@ -195,3 +195,67 @@ body{
 .site-footer a:hover {
   text-decoration: underline;
 }
+
+/* === Layout migliorato per la card People === */
+
+/* Definiamo chiaramente le aree della griglia */
+.people-grid .person{
+  grid-template-areas:
+    "photo name"
+    "photo role"
+    "bio   bio"
+    "links links";
+  row-gap: 0.45rem;
+}
+
+/* Foto */
+.people-grid .person > img{
+  grid-area: photo;
+}
+
+/* Nome */
+.people-grid .person > h2{
+  grid-area: name;
+  margin: 0 0 .25rem 0;
+}
+
+/* PI + affiliazione subito sotto il nome */
+.people-grid .person > .role{
+  grid-area: role;
+  margin: 0;
+  line-height: 1.35;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* Bio: si estende su tutta la scheda */
+.people-grid .person > .bio{
+  grid-area: bio;
+  margin: .5rem 0 0 0;
+  line-height: 1.55;
+}
+
+/* Link in fondo, full-width */
+.people-grid .person > .person-links{
+  grid-area: links;
+  margin-top: .75rem;
+  font-size: 0.95rem;
+}
+
+/* === Responsive sotto 720px (manteniamo il tuo stile) === */
+@media (max-width: 720px){
+  .people-grid .person{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "name"
+      "role"
+      "bio"
+      "links";
+  }
+  
+  .people-grid .person > img{
+    margin-inline: auto;
+  }
+}
+
