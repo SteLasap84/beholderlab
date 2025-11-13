@@ -151,15 +151,25 @@ body{
   margin-inline: auto;
 }
 
+/* Card: due colonne = sinistra (foto+link), destra (testo) */
 .people-grid .person{
   display: grid;
-  grid-template-columns: clamp(120px, 20vw, 220px) 1fr; /* img | testo */
-  gap: 1.25rem;
+  grid-template-columns: clamp(120px, 20vw, 220px) 1fr;
+  column-gap: 2rem;
+  row-gap: 0;
   align-items: start;
 }
 
-/* Avatar quadrato piccolo, niente deformazioni */
-.people-grid .person > img{
+/* Colonna sinistra: foto + link sotto */
+.person-left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Avatar quadrato, niente deformazioni */
+.person-left img{
   width: clamp(120px, 20vw, 220px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -167,13 +177,44 @@ body{
   display: block;
 }
 
-/* Mobile: impila immagine sopra il testo */
+/* Link sotto la foto */
+.person-left .person-links{
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Colonna destra: nome, ruolo, bio uno sotto l’altro */
+.person-right h2{
+  margin: 0 0 0.2rem 0;
+}
+
+.person-right .role{
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.person-right .bio{
+  margin: 0.5rem 0 0 0;
+  line-height: 1.55;
+  max-width: 75ch;
+}
+
+/* Mobile: impila ma mantiene i blocchi coerenti */
 @media (max-width: 720px){
   .people-grid .person{
     grid-template-columns: 1fr;
+    row-gap: 1rem;
   }
-  .people-grid .person > img{
-    margin-inline: auto;
+
+  .person-left{
+    align-items: center;
+    text-align: center;
+  }
+
+  .person-right{
+    text-align: left;
   }
 }
 
@@ -191,195 +232,7 @@ body{
   filter: brightness(1.1);
 }
 
-
 .site-footer a:hover {
   text-decoration: underline;
 }
 
-/* === Layout migliorato per la card People === */
-
-/* Definiamo chiaramente le aree della griglia */
-.people-grid .person{
-  grid-template-areas:
-    "photo name"
-    "photo role"
-    "bio   bio"
-    "links links";
-  row-gap: 0.45rem;
-}
-
-/* Foto */
-.people-grid .person > img{
-  grid-area: photo;
-}
-
-/* Nome */
-.people-grid .person > h2{
-  grid-area: name;
-  margin: 0 0 .25rem 0;
-}
-
-/* PI + affiliazione subito sotto il nome */
-.people-grid .person > .role{
-  grid-area: role;
-  margin: 0;
-  line-height: 1.35;
-  opacity: 0.85;
-  font-size: 0.95rem;
-}
-
-/* Bio: si estende su tutta la scheda */
-.people-grid .person > .bio{
-  grid-area: bio;
-  margin: .5rem 0 0 0;
-  line-height: 1.55;
-}
-
-/* Link in fondo, full-width */
-.people-grid .person > .person-links{
-  grid-area: links;
-  margin-top: .75rem;
-  font-size: 0.95rem;
-}
-
-/* === Responsive sotto 720px (manteniamo il tuo stile) === */
-@media (max-width: 720px){
-  .people-grid .person{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "photo"
-      "name"
-      "role"
-      "bio"
-      "links";
-  }
-  
-  .people-grid .person > img{
-    margin-inline: auto;
-  }
-}
-
-/* Struttura a griglia aggiornata */
-.people-grid .person{
-  display: grid;
-  grid-template-columns: clamp(120px, 20vw, 220px) 1fr;
-  grid-template-areas:
-    "photo name"
-    "links role"
-    ".     bio";
-  column-gap: 2rem;
-  row-gap: 0.75rem;
-}
-
-/* Foto */
-.people-grid .person > img{
-  grid-area: photo;
-}
-
-/* Link subito sotto la foto */
-.people-grid .person > .person-links{
-  grid-area: links;
-  margin: 0.5rem 0 0 0;
-  font-size: 0.95rem;
-}
-
-/* Nome */
-.people-grid .person > h2{
-  grid-area: name;
-  margin: 0;
-}
-
-/* PI + affiliazione subito sotto il nome */
-.people-grid .person > .role{
-  grid-area: role;
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.45;
-  opacity: 0.9;
-}
-
-/* Bio allineata alla colonna del nome, non sotto la foto */
-.people-grid .person > .bio{
-  grid-area: bio;
-  margin: 0.5rem 0 0 0;
-  line-height: 1.55;
-  max-width: 75ch;
-}
-
-/* Responsive */
-@media (max-width: 720px){
-  .people-grid .person{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "photo"
-      "links"
-      "name"
-      "role"
-      "bio";
-  }
-
-  .people-grid .person > img{
-    margin-inline: auto;
-  }
-  .people-grid .person > .person-links{
-    text-align: center;
-  }
-}
-
-/* Forza allineamento della colonna destra verso l'alto */
-.people-grid .person > h2,
-.people-grid .person > .role,
-.people-grid .person > .bio {
-  align-self: start;
-}
-
-/* Riduce lo spazio tra nome e PI */
-.people-grid .person > h2 {
-  margin-bottom: 0.2rem;
-}
-
-.people-grid .person > .role {
-  margin-top: 0rem;
-}
-
-/* Riduce lo spazio tra PI e Bio */
-.people-grid .person > .bio {
-  margin-top: 0.4rem;
-}
-
-
-/* === PEOPLE: allineamento stretto nome / ruolo / bio === */
-
-.people-grid .person{
-  grid-template-areas:
-    "photo name"
-    "links role"
-    ".     bio";
-  align-items: start;
-}
-
-/* Nome */
-.people-grid .person > h2{
-  grid-area: name;
-  align-self: start !important;
-  margin-top: 0 !important;
-  margin-bottom: 0.15rem !important;
-}
-
-/* PI + affiliazione subito sotto il nome, senza extra spazio */
-.people-grid .person > .role{
-  grid-area: role;
-  align-self: start !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-/* Bio attaccata al blocco PI */
-.people-grid .person > .bio{
-  grid-area: bio;
-  align-self: start !important;
-  margin-top: 0.4rem !important;
-  margin-bottom: 0 !important;
-}
