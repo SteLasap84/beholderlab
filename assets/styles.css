@@ -326,3 +326,23 @@ body{
   }
 }
 
+/* Forza allineamento della colonna destra verso l'alto */
+.people-grid .person > h2,
+.people-grid .person > .role,
+.people-grid .person > .bio {
+  align-self: start;
+}
+
+/* Riduce lo spazio tra nome e PI */
+.people-grid .person > h2 {
+  margin-bottom: 0.2rem;
+}
+
+.people-grid .person > .role {
+  margin-top: 0rem;
+}
+
+/* Riduce lo spazio tra PI e Bio */
+.people-grid .person > .bio {
+  margin-top: 0.4rem;
+}
