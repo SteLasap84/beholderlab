@@ -108,7 +108,7 @@ body{
 .card p{ color:var(--muted); }
 .card-link{ text-decoration:none; color:var(--accent); }
 
-.lede{ color:var(--muted); max-width:68ch; }
+.lede{ color:var(--muted); max-width:90ch; }
 
 .people-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1rem; margin:1rem 0 2rem; }
 .person{ background:var(--card); border:1px solid var(--card-border); border-radius:1rem; padding:1rem; }
