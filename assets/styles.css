@@ -350,3 +350,49 @@ body{
 .media-card-link .media-card-meta{
   color: inherit;
 }
+
+.research-accordions details{
+  overflow: hidden;
+}
+
+.research-panel{
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.research-image{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: .9rem;
+  border: 1px solid var(--card-border);
+}
+
+.research-text p{
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+}
+
+.research-tags{
+  font-size: .95rem;
+  color: var(--fg);
+  opacity: .9;
+}
+
+.research-accordions summary{
+  font-weight: 700;
+}
+
+@media (min-width: 860px){
+  .research-panel{
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    align-items: start;
+  }
+
+  .research-image{
+    aspect-ratio: 4 / 3;
+    height: 100%;
+  }
+}
