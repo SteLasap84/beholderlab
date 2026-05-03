@@ -396,3 +396,48 @@ body{
     height: 100%;
   }
 }
+
+.contact-info-card{
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  padding: 1.2rem 1.3rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info-card h2{
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.contact-columns{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.contact-columns h3{
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+.contact-columns p{
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact-photo{
+  width: 100%;
+  display: block;
+  border-radius: .9rem;
+  border: 1px solid var(--card-border);
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 860px){
+  .contact-columns{
+    grid-template-columns: 1fr;
+  }
+}
