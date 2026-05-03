@@ -30,7 +30,7 @@ body{
   border-bottom:1px solid var(--card-border);
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:.75rem 0; }
-.brand{ display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--fg); font-weight:650; letter-spacing:.2px; }
+.brand{ display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--fg); font-weight:650; letter-spacing:.2px; }
 .logo{ width:40px; height:40px; }
 
 .nav{ display:flex; gap:1rem; list-style:none; margin:0; padding:0; }
