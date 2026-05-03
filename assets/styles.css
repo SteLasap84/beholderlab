@@ -333,3 +333,20 @@ body{
     aspect-ratio: 16 / 10;
   }
 }
+
+.media-card-link{
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-card-link:hover{
+  text-decoration: none;
+}
+
+.media-card-link .media-card-content h3,
+.media-card-link .media-card-content p,
+.media-card-link .media-card-meta{
+  color: inherit;
+}
