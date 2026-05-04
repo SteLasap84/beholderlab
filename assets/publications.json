@@ -1,5 +1,101 @@
 [
    {
+    "authors": "Lozito, S.; Piga, V.; Lo Presti, S.; Scuderi, A.;  Doricchi, F.; Silvetti, M.; Lasaponara, S.", 
+    "year": 2026,
+    "title": "Eye of the beholder: Pupillary response reflects how subjective prior beliefs shape reinforcement learning with fake news",
+    "venue": "Proceedings of the National Academy of Sciences of the United States of America",
+    "doi": "10.1073/pnas.2518776123",
+    "link": "https://doi.org/10.1073/pnas.2518776123",
+    "pdf": "",
+    "tech": [
+      "Pupillometry",
+      "Computational Neuroscience"
+    ],
+    "project": "Belief"
+  },
+   {
+    "authors": "Lozito, S.; Lasaponara, S.; Liu, J.; Navarro, V.; Lehongre, K.; Frazzini, V.; Seidel Malkinson, T.; Doricchi, F.; Bartolomeo, P.", 
+    "year": 2026,
+    "title": "Towards a bridge between intracerebral and surface EEG signatures of conscious report",
+    "venue": "Neuroscience of Consciousness",
+    "doi": "10.1093/nc/niag011",
+    "link": "https://doi.org/10.1093/nc/niag011",
+    "pdf": "",
+    "tech": [
+      "EEG",
+      "Neuropsychological patients"
+    ],
+    "project": "Attention"
+  },
+   {
+    "authors": "Campo, C.; Cellucci, F.; Treggiari, G.; Spedicato, G.A.; Lasaponara, S.; Conversi, D.", 
+    "year": 2026,
+    "title": "Mind–body effects of mindfulness-based training in athletes: a preliminary randomized controlled trial",
+    "venue": "Frontiers in Psychology",
+    "doi": "10.3389/fpsyg.2026.1755043",
+    "link": "https://doi.org/10.3389/fpsyg.2026.1755043",
+    "pdf": "",
+    "tech": [
+      "Behavioural study"
+    ],
+    "project": "Miscellaneous"
+  },
+   {
+    "authors": "Doricchi, F.; Scozia, G.; Pinto, M.; Lozito, S.; Lo Presti, S.; Pazzaglia, M.; Silvetti, M.; Lasaponara, S.", 
+    "year": 2026,
+    "title": "EEG reveals how space acts as a late heuristic of time",
+    "venue": "NeuroImage",
+    "doi": "10.1016/j.neuroimage.2026.121710",
+    "link": "https://doi.org/10.1016/j.neuroimage.2026.121710",
+    "pdf": "",
+    "tech": [
+      "EEG",
+      "Computational Neuroscience"
+    ],
+    "project": "Spatial representation of number/time magnitudes"
+  },
+   {
+    "authors": "Pellegrino, M.; Ortame, L.; Glicksohn, J.; Paoletti, P.; Marson, F.; Lasaponara, S.; Romano, M.S.; Doricchi, F.; Carducci, F.; Dotan Ben-Soussan, T.", 
+    "year": 2025,
+    "title": "Meditation-Like States of Attention and Time Perception: Longer Productions in Deeper and More Embodied States",
+    "venue": "Timing & Time Perception",
+    "doi": "10.1163/22134468-bja10127",
+    "link": "https://doi.org/10.1163/22134468-bja10127",
+    "pdf": "",
+    "tech": [
+      "Behavioural study"
+    ],
+    "project": "Miscellaneous"
+  },
+   {
+    "authors": "Piccardi, L.; Russo, S.; Lasaponara, S.; Boccia, M.; Riso, C.; Tizzani, E.; Burrai, J.; Giannini, A.M.; Guariglia, P.", 
+    "year": 2025,
+    "title": "Exploring EMDR: an innovative approach with Posner Paradigm to reprocessing negative memories in a non-clinical sample",
+    "venue": "Frontiers in Psychiatry",
+    "doi": "10.3389/fpsyt.2025.1605608",
+    "link": "https://doi.org/10.3389/fpsyt.2025.1605608",
+    "pdf": "",
+    "tech": [
+      "Pupillometry",
+      "Behavioural study"
+    ],
+    "project": ["Attention", "Miscellaneous"]
+  },
+   {
+    "authors": "Lozito S.; Scuderi A.; Pertosa G.; Piga V.; Lo Presti S.; Doricchi F.; Lasaponara S.", 
+    "year": 2025,
+    "title": "How temperament shapes the network of attention: Insights from the attention network test and pupil dilation",
+    "venue": "Biological Psychology",
+    "doi": "10.1016/j.biopsycho.2025.109167",
+    "link": "https://doi.org/10.1016/j.biopsycho.2025.109167",
+    "pdf": "",
+    "tech": [
+      "Pupillometry",
+      "Behavioural study"
+    ],
+    "project": "Attention"
+  },
+   {
     "authors": "Cardile D.; Campana S.; Vicario C.M.; Doricchi F.; Lasaponara S.; Calabrò R.S.; Tomaiuolo F.",
     "year": 2025,
     "title": "Post‑stroke disorders of ownership and agency, alien/anarchic hand syndrome: A longitudinal case analysis and systematic review",
