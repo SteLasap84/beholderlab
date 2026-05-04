@@ -441,3 +441,23 @@ body{
     grid-template-columns: 1fr;
   }
 }
+
+.contact-grid a,
+.contact-grid a:visited,
+.contact-columns a,
+.contact-columns a:visited,
+.contact-info-card a,
+.contact-info-card a:visited {
+  color: var(--accent-link);
+  text-decoration: none;
+}
+
+.contact-grid a:hover,
+.contact-columns a:hover,
+.contact-info-card a:hover,
+.contact-grid a:focus,
+.contact-columns a:focus,
+.contact-info-card a:focus {
+  text-decoration: underline;
+  filter: brightness(1.08);
+}
