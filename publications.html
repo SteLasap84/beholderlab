@@ -9,49 +9,13 @@
   <meta property="og:site_name" content="Beholder Lab">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <link rel="icon" href="/assets/favicon.ico">
+  <meta property="og:image" content="https://beholderlab.it/assets/beholderlogo.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Publications • Beholder Lab">
+  <meta name="twitter:description" content="Beholder Lab — Cognitive neuroscience of belief, attention, and decision-making.">
+  <meta name="twitter:image" content="https://beholderlab.it/assets/beholderlogo.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/beholderlogo.svg">
   <link rel="stylesheet" href="/assets/styles.css">
-  <style>
-  /* --- FILTRI (Year, Technique, Project) --- */
-  .pub-filters{margin:.75rem 0 1rem}
-  .filter-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.4rem 0}
-  
-  .chip,.tag-btn,.btn-clear{
-    border:1px solid #70b7ff;          /* celeste tenue */
-    color:#b8dcff;                     /* testo celeste chiaro */
-    background:transparent;
-    padding:.2rem .6rem;
-    border-radius:999px;
-    cursor:pointer;
-    font-size:.9rem;
-    line-height:1.2;
-    transition:all .2s ease;
-  }
-
-  .chip:hover,.tag-btn:hover{
-    background:#70b7ff22;              /* leggero bagliore */
-    color:#ffffff;
-  }
-
-  .chip.is-active,.tag-btn.is-active{
-    background:#70b7ff;
-    color:#0e1a2b;                     /* testo scuro su sfondo chiaro */
-    border-color:#70b7ff;
-  }
-
-  .tag-badges .badge{
-    border:1px solid #70b7ff;
-    color:#70b7ff;
-    border-radius:999px;
-    padding:.1rem .5rem;
-    font-size:.75rem;
-    opacity:.95;
-  }
-
-  .pub-count{opacity:.7;font-size:.9rem}
-  .group-label{font-weight:600}
-</style>
-
 </head>
 
 <body>
@@ -81,6 +45,9 @@
 
   <!-- FILTRI -->
   <div class="pub-filters" aria-label="Filter publications">
+    <div class="filter-row">
+      <input type="search" id="pub-search" placeholder="Search by title or author…" aria-label="Search publications by title or author" style="background:#0f1420;border:1px solid #70b7ff;color:var(--fg);border-radius:999px;padding:.25rem .8rem;font-size:.9rem;min-width:220px;outline:none;">
+    </div>
     <div class="filter-row">
       <span class="group-label">Year:</span>
       <div id="year-filter" class="year-filter" role="group" aria-label="Year"></div>
@@ -234,6 +201,7 @@
     const projHost = document.getElementById('proj-filter');
     const clearBtn = document.getElementById('clear-filters');
     const countEl = document.getElementById('pub-count');
+    const searchEl = document.getElementById('pub-search');
 
     // Years
     const years = Array.from(new Set(list.map(p=>p.year).filter(Boolean))).sort((a,b)=>b-a);
@@ -275,17 +243,22 @@
     });
     clearBtn.addEventListener('click', ()=>{
       activeYear=null; activeTech.clear(); activeProj.clear();
+      if(searchEl) searchEl.value='';
       yearHost.querySelectorAll('.chip').forEach((b,i)=>b.classList.toggle('is-active', i===0));
       techHost.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('is-active'));
       projHost.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('is-active'));
       apply();
     });
 
+    if(searchEl) searchEl.addEventListener('input', apply);
+
     function apply(){
       const yearOn = !!activeYear;
       const techOn = activeTech.size>0;
       const projOn = activeProj.size>0;
-      clearBtn.hidden = !(yearOn||techOn||projOn);
+      const searchVal = searchEl ? searchEl.value.trim().toLowerCase() : '';
+      const searchOn = searchVal.length > 0;
+      clearBtn.hidden = !(yearOn||techOn||projOn||searchOn);
 
       let shown=0;
       items.forEach(li=>{
@@ -294,7 +267,13 @@
         const liProj = (li.dataset.project||'').split('|').filter(Boolean);
         const okTech = !techOn || Array.from(activeTech).every(t=>liTech.includes(t));
         const okProj = !projOn || Array.from(activeProj).every(p=>liProj.includes(p));
-        const show = okYear && okTech && okProj;
+        let okSearch = true;
+        if(searchOn){
+          const authorsText = (li.querySelector('.authors')||{}).textContent||'';
+          const titleText = (li.querySelector('.title')||{}).textContent||'';
+          okSearch = (authorsText+' '+titleText).toLowerCase().includes(searchVal);
+        }
+        const show = okYear && okTech && okProj && okSearch;
         li.hidden = !show;
         if (show) shown++;
       });

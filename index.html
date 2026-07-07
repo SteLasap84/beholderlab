@@ -9,9 +9,41 @@
   <meta property="og:site_name" content="Beholder Lab">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <link rel="icon" href="/assets/favicon.ico">
+  <meta property="og:image" content="https://beholderlab.it/assets/beholderlogo.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Home • Beholder Lab">
+  <meta name="twitter:description" content="Beholder Lab — Cognitive neuroscience of belief, attention, and predictions.">
+  <meta name="twitter:image" content="https://beholderlab.it/assets/beholderlogo.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/beholderlogo.svg">
   <link rel="stylesheet" href="/assets/styles.css">
   <script defer src="/assets/script.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ResearchOrganization",
+    "name": "Beholder Lab",
+    "url": "https://beholderlab.it/",
+    "logo": "https://beholderlab.it/assets/beholderlogo.svg",
+    "sameAs": [
+      "https://x.com/StefanoLasap",
+      "https://www.linkedin.com/in/stefano-lasaponara/",
+      "https://www.instagram.com/seth_who/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via dei Marsi, 78",
+      "postalCode": "00185",
+      "addressLocality": "Rome",
+      "addressCountry": "IT",
+      "addressRegion": "Lazio"
+    },
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Sapienza University of Rome",
+      "department": "Department of Psychology"
+    }
+  }
+  </script>
 </head>
 <body>
 <header class="site-header">
@@ -42,6 +74,13 @@
   </div>
 </section>
 
+<section class="latest-pub">
+  <h2>Latest Publication</h2>
+  <div id="latest-pub-card" class="latest-pub-card">
+    <p style="opacity:.8">Loading latest publication…</p>
+  </div>
+</section>
+
 <section class="cards">
   <article class="card">
     <h2>People</h2>
@@ -54,7 +93,7 @@
     <a href="/publications.html" class="card-link">Browse publications →</a>
   </article>
   <article class="card">
-    <h2>Outreach</h2>
+    <h2>Media</h2>
     <p>Media, talks, and creative collaborations to share cognitive neuroscience with a broader audience.</p>
     <a href="/media.html" class="card-link">Discover media →</a>
   </article>
@@ -68,5 +107,33 @@
   </div>
 </footer>
 <script defer src="assets/script.js"></script>
+<script>
+(function(){
+  var card = document.getElementById('latest-pub-card');
+  if(!card) return;
+  fetch('/assets/publications.json').then(function(r){
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  }).then(function(list){
+    list.sort(function(a,b){return (b.year||0)-(a.year||0);});
+    var p = list[0];
+    if(!p){ card.innerHTML='<p style="opacity:.8">No publications found.</p>'; return; }
+    var href = p.link || (p.doi ? 'https://doi.org/'+p.doi.replace(/^https?:\/\/doi\.org\//,'') : '');
+    var titleHTML = href
+      ? '<a href="'+href+'" target="_blank" rel="noopener">'+escHtml(p.title||'')+'</a>'
+      : escHtml(p.title||'');
+    card.innerHTML =
+      '<p class="lp-meta">'+(p.year||'')+'</p>'+
+      '<p class="lp-title">'+titleHTML+'</p>'+
+      '<p class="lp-authors">'+escHtml(p.authors||'')+'</p>'+
+      '<p class="lp-venue">'+escHtml(p.venue||'')+'</p>'+
+      '<a href="/publications.html" class="lp-link">See all publications →</a>';
+  }).catch(function(){
+    card.innerHTML='<p style="opacity:.8">Unable to load latest publication.</p>'+
+      '<a href="/publications.html" class="lp-link">See all publications →</a>';
+  });
+  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+})();
+</script>
 </body>
 </html>
