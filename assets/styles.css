@@ -501,6 +501,17 @@ body{
 .pub-count{opacity:.7;font-size:.9rem}
 .group-label{font-weight:600}
 
+.pub-search-input{
+  background:#0f1420;
+  border:1px solid #70b7ff;
+  color:var(--fg);
+  border-radius:999px;
+  padding:.25rem .8rem;
+  font-size:.9rem;
+  min-width:220px;
+  outline:none;
+}
+
 /* --- Latest publication section on home --- */
 .latest-pub{
   margin:2rem 0;

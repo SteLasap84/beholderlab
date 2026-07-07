@@ -118,7 +118,7 @@
     list.sort(function(a,b){return (b.year||0)-(a.year||0);});
     var p = list[0];
     if(!p){ card.innerHTML='<p style="opacity:.8">No publications found.</p>'; return; }
-    var href = p.link || (p.doi ? 'https://doi.org/'+p.doi.replace(/^https?:\/\/doi\.org\//,'') : '');
+    var href = safeUrl(p.link) || (p.doi ? safeUrl('https://doi.org/'+p.doi.replace(/^https?:\/\/doi\.org\//,'')) : '');
     var titleHTML = href
       ? '<a href="'+href+'" target="_blank" rel="noopener">'+escHtml(p.title||'')+'</a>'
       : escHtml(p.title||'');
@@ -132,7 +132,8 @@
     card.innerHTML='<p style="opacity:.8">Unable to load latest publication.</p>'+
       '<a href="/publications.html" class="lp-link">See all publications →</a>';
   });
-  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  function safeUrl(u){ return (u && /^https?:\/\//i.test(u)) ? u : ''; }
 })();
 </script>
 </body>
