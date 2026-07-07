@@ -461,3 +461,124 @@ body{
   text-decoration: underline;
   filter: brightness(1.08);
 }
+
+/* --- FILTRI Publications (Year, Technique, Project) --- */
+.pub-filters{margin:.75rem 0 1rem}
+.filter-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.4rem 0}
+
+.chip,.tag-btn,.btn-clear{
+  border:1px solid #70b7ff;
+  color:#b8dcff;
+  background:transparent;
+  padding:.2rem .6rem;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:.9rem;
+  line-height:1.2;
+  transition:all .2s ease;
+}
+
+.chip:hover,.tag-btn:hover{
+  background:#70b7ff22;
+  color:#ffffff;
+}
+
+.chip.is-active,.tag-btn.is-active{
+  background:#70b7ff;
+  color:#0e1a2b;
+  border-color:#70b7ff;
+}
+
+.tag-badges .badge{
+  border:1px solid #70b7ff;
+  color:#70b7ff;
+  border-radius:999px;
+  padding:.1rem .5rem;
+  font-size:.75rem;
+  opacity:.95;
+}
+
+.pub-count{opacity:.7;font-size:.9rem}
+.group-label{font-weight:600}
+
+.pub-search-input{
+  background:#0f1420;
+  border:1px solid #70b7ff;
+  color:var(--fg);
+  border-radius:999px;
+  padding:.25rem .8rem;
+  font-size:.9rem;
+  min-width:220px;
+  outline:none;
+}
+
+/* --- Latest publication section on home --- */
+.latest-pub{
+  margin:2rem 0;
+}
+
+.latest-pub-card{
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:1rem;
+  padding:1.2rem 1.3rem;
+}
+
+.latest-pub-card .lp-meta{
+  color:var(--accent);
+  font-size:.9rem;
+  font-weight:600;
+  margin:0 0 .4rem;
+}
+
+.latest-pub-card .lp-title{
+  font-size:1.1rem;
+  font-weight:700;
+  margin:0 0 .3rem;
+}
+
+.latest-pub-card .lp-title a{
+  color:var(--fg);
+  text-decoration:none;
+}
+
+.latest-pub-card .lp-title a:hover{
+  color:var(--accent);
+  text-decoration:underline;
+}
+
+.latest-pub-card .lp-authors{
+  color:var(--muted);
+  font-size:.95rem;
+  margin:0 0 .3rem;
+}
+
+.latest-pub-card .lp-venue{
+  color:var(--muted);
+  font-size:.9rem;
+  font-style:italic;
+  margin:0 0 .8rem;
+}
+
+.latest-pub-card .lp-link{
+  color:var(--accent);
+  text-decoration:none;
+  font-size:.95rem;
+  font-weight:600;
+}
+
+.latest-pub-card .lp-link:hover{
+  text-decoration:underline;
+}
+
+.latest-pub-card .lp-loading{
+  opacity:.8;
+}
+
+/* --- Google Maps embed in contact --- */
+.map-embed{
+  margin-top:1.2rem;
+  border-radius:.9rem;
+  overflow:hidden;
+  border:1px solid var(--card-border);
+}
