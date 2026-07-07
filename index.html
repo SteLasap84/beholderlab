@@ -77,7 +77,7 @@
 <section class="latest-pub">
   <h2>Latest Publication</h2>
   <div id="latest-pub-card" class="latest-pub-card">
-    <p style="opacity:.8">Loading latest publication…</p>
+    <p class="lp-loading">Loading latest publication…</p>
   </div>
 </section>
 
@@ -117,7 +117,7 @@
   }).then(function(list){
     list.sort(function(a,b){return (b.year||0)-(a.year||0);});
     var p = list[0];
-    if(!p){ card.innerHTML='<p style="opacity:.8">No publications found.</p>'; return; }
+    if(!p){ card.innerHTML='<p class="lp-loading">No publications found.</p>'; return; }
     var href = safeUrl(p.link) || (p.doi ? safeUrl('https://doi.org/'+p.doi.replace(/^https?:\/\/doi\.org\//,'')) : '');
     var titleHTML = href
       ? '<a href="'+href+'" target="_blank" rel="noopener">'+escHtml(p.title||'')+'</a>'
@@ -129,7 +129,7 @@
       '<p class="lp-venue">'+escHtml(p.venue||'')+'</p>'+
       '<a href="/publications.html" class="lp-link">See all publications →</a>';
   }).catch(function(){
-    card.innerHTML='<p style="opacity:.8">Unable to load latest publication.</p>'+
+    card.innerHTML='<p class="lp-loading">Unable to load latest publication.</p>'+
       '<a href="/publications.html" class="lp-link">See all publications →</a>';
   });
   function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }

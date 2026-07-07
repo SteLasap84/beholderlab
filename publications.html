@@ -269,8 +269,8 @@
         const okProj = !projOn || Array.from(activeProj).every(p=>liProj.includes(p));
         let okSearch = true;
         if(searchOn){
-          const authorsText = (li.querySelector('.authors')||{}).textContent||'';
-          const titleText = (li.querySelector('.title')||{}).textContent||'';
+          const authorsText = li.querySelector('.authors')?.textContent || '';
+          const titleText = li.querySelector('.title')?.textContent || '';
           okSearch = (authorsText+' '+titleText).toLowerCase().includes(searchVal);
         }
         const show = okYear && okTech && okProj && okSearch;

@@ -571,6 +571,10 @@ body{
   text-decoration:underline;
 }
 
+.latest-pub-card .lp-loading{
+  opacity:.8;
+}
+
 /* --- Google Maps embed in contact --- */
 .map-embed{
   margin-top:1.2rem;
