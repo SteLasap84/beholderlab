@@ -30,6 +30,32 @@ The contact page includes a static form with `data-netlify="true"`. It will work
 - Replace `/assets/logo-placeholder.svg` with your real logo and update `<img>` if needed.
 - Add publications in `publications.html` under `<ul class="publist">`.
 
+## Scopus publications sync
+
+An automated workflow keeps `assets/publications.json` up-to-date by querying the [Scopus](https://www.scopus.com/) API for the lab author profile.
+
+### What it does
+1. Fetches all publications for the configured Scopus Author ID (`36437362600`).
+2. Merges new entries into `assets/publications.json` without overwriting manually curated `tech`/`project` fields.
+3. Opens (or updates) a pull request titled **"chore(publications): sync from Scopus"** when new publications are found.
+4. Does nothing if there are no new publications.
+
+### Required secret
+Add the following secret under **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Secret name      | Description                         |
+|------------------|-------------------------------------|
+| `SCOPUS_API_KEY` | Your Elsevier/Scopus API key        |
+
+### Schedule
+The workflow runs **every Monday at 01:00 UTC** (cron: `0 1 * * 1`).
+
+### Manual run
+1. Go to **Actions** → **Scopus publications sync**.
+2. Click **Run workflow** → **Run workflow**.
+
+The workflow will run immediately and open a PR if new publications are found.
+
 ## Developer notes
 - No build step: pure HTML/CSS/JS.
 - `.nojekyll` prevents Jekyll from interfering with asset paths.

@@ -1,0 +1,83 @@
+name: Scopus publications sync
+
+on:
+  schedule:
+    # Every Monday at 01:00 UTC
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  SCOPUS_AUTHOR_ID: "36437362600"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Validate Scopus API key is present
+        run: |
+          if [ -z "${{ secrets.SCOPUS_API_KEY }}" ]; then
+            echo "ERROR: Repository secret SCOPUS_API_KEY is not set." >&2
+            echo "Please add the secret under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+      - name: Run Scopus sync script
+        id: sync
+        env:
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+          PUBLICATIONS_JSON: assets/publications.json
+        run: python .github/scripts/scopus_sync.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet assets/publications.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in assets/publications.json — nothing to commit."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in assets/publications.json."
+          fi
+
+      - name: Open or update pull request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: bot/scopus-sync-publications
+          base: main
+          commit-message: "chore(publications): sync from Scopus"
+          title: "chore(publications): sync from Scopus"
+          body: |
+            ## Automated Scopus sync
+
+            **New publications added:** ${{ steps.sync.outputs.ADDED_COUNT }}
+            **Run timestamp:** ${{ github.event.repository.updated_at || 'see workflow run' }}
+            **Triggered by:** ${{ github.event_name }}
+
+            This PR was opened automatically by the Scopus sync workflow.
+            Please review the changes in `assets/publications.json` before merging.
+
+            > Manually curated `tech` and `project` fields of existing entries are preserved.
+          labels: automated, publications
+          delete-branch: true
+
+      - name: No updates
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No updates — skipping PR creation."
