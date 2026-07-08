@@ -79,6 +79,7 @@
   <div id="latest-pub-card" class="latest-pub-card">
     <p class="lp-loading">Loading latest publication…</p>
   </div>
+  <div id="lp-dots" class="lp-dots" aria-label="Publication indicators" hidden></div>
 </section>
 
 <section class="cards">
@@ -110,30 +111,96 @@
 <script>
 (function(){
   var card = document.getElementById('latest-pub-card');
+  var dotsEl = document.getElementById('lp-dots');
+  var section = card ? card.closest('section') : null;
   if(!card) return;
+
+  var top = [];
+  var current = 0;
+  var timer = null;
+  var paused = false;
+
+  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  function safeUrl(u){ return (u && /^https?:\/\//i.test(u)) ? u : ''; }
+
+  function renderPub(p){
+    var href = safeUrl(p.link) || (p.doi ? safeUrl('https://doi.org/'+encodeURIComponent(p.doi.replace(/^https?:\/\/doi\.org\//,''))) : '');
+    var titleHTML = href
+      ? '<a href="'+escHtml(href)+'" target="_blank" rel="noopener">'+escHtml(p.title||'')+'</a>'
+      : escHtml(p.title||'');
+    return '<p class="lp-meta">'+(p.year||'')+'</p>'+
+      '<p class="lp-title">'+titleHTML+'</p>'+
+      '<p class="lp-authors">'+escHtml(p.authors||'')+'</p>'+
+      '<p class="lp-venue">'+escHtml(p.venue||'')+'</p>'+
+      '<a href="/publications.html" class="lp-link">See all publications \u2192</a>';
+  }
+
+  function renderCurrent(){
+    card.innerHTML = renderPub(top[current]);
+    if(dotsEl){
+      var btns = dotsEl.querySelectorAll('button');
+      for(var i=0;i<btns.length;i++){
+        var active = i === current;
+        btns[i].classList.toggle('lp-dot-active', active);
+        btns[i].setAttribute('aria-current', active ? 'true' : 'false');
+      }
+    }
+  }
+
+  function startRotation(){
+    if(top.length <= 1) return;
+    if(timer || paused) return;
+    timer = setInterval(function(){
+      current = (current + 1) % top.length;
+      renderCurrent();
+    }, 30000);
+  }
+
+  function stopRotation(){
+    if(timer){ clearInterval(timer); timer = null; }
+  }
+
+  function goTo(i){
+    stopRotation();
+    current = i;
+    renderCurrent();
+    startRotation();
+  }
+
   fetch('/assets/publications.json').then(function(r){
     if(!r.ok) throw new Error('HTTP '+r.status);
     return r.json();
   }).then(function(list){
     list.sort(function(a,b){return (b.year||0)-(a.year||0);});
-    var p = list[0];
-    if(!p){ card.innerHTML='<p class="lp-loading">No publications found.</p>'; return; }
-    var href = safeUrl(p.link) || (p.doi ? safeUrl('https://doi.org/'+p.doi.replace(/^https?:\/\/doi\.org\//,'')) : '');
-    var titleHTML = href
-      ? '<a href="'+href+'" target="_blank" rel="noopener">'+escHtml(p.title||'')+'</a>'
-      : escHtml(p.title||'');
-    card.innerHTML =
-      '<p class="lp-meta">'+(p.year||'')+'</p>'+
-      '<p class="lp-title">'+titleHTML+'</p>'+
-      '<p class="lp-authors">'+escHtml(p.authors||'')+'</p>'+
-      '<p class="lp-venue">'+escHtml(p.venue||'')+'</p>'+
-      '<a href="/publications.html" class="lp-link">See all publications →</a>';
+    top = list.slice(0,3);
+    if(!top.length){ card.innerHTML='<p class="lp-loading">No publications found.</p>'; return; }
+
+    renderCurrent();
+
+    if(dotsEl && top.length > 1){
+      dotsEl.hidden = false;
+      dotsEl.innerHTML = '';
+      top.forEach(function(pub,i){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lp-dot' + (i===0 ? ' lp-dot-active' : '');
+        btn.setAttribute('aria-label', 'Show publication '+(i+1));
+        btn.setAttribute('aria-current', i===0 ? 'true' : 'false');
+        btn.addEventListener('click', function(){ goTo(i); });
+        dotsEl.appendChild(btn);
+      });
+    }
+
+    if(section){
+      section.addEventListener('mouseenter', function(){ paused = true; stopRotation(); });
+      section.addEventListener('mouseleave', function(){ paused = false; startRotation(); });
+    }
+
+    startRotation();
   }).catch(function(){
     card.innerHTML='<p class="lp-loading">Unable to load latest publication.</p>'+
-      '<a href="/publications.html" class="lp-link">See all publications →</a>';
+      '<a href="/publications.html" class="lp-link">See all publications \u2192</a>';
   });
-  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-  function safeUrl(u){ return (u && /^https?:\/\//i.test(u)) ? u : ''; }
 })();
 </script>
 </body>
