@@ -269,10 +269,14 @@ def merge_publications(existing: list[dict], new_from_scopus: list[dict]) -> tup
 
 
 def sort_publications(pubs: list[dict]) -> list[dict]:
-    """Sort by year descending (None last), then title ascending."""
+    """Sort by year descending (None/0 last), then title ascending."""
     def sort_key(p):
         year = p.get("year")
-        y = -year if year is not None else 1  # None → 1 (after negatives)
+        # None or 0 → sort last (use a large positive sentinel after negating)
+        if year:
+            y = -year
+        else:
+            y = 9999
         title = (p.get("title") or "").lower()
         return (y, title)
     return sorted(pubs, key=sort_key)
@@ -328,8 +332,10 @@ def _set_output(name: str, value: str):
     if gh_out:
         with open(gh_out, "a") as fh:
             fh.write(f"{name}={value}\n")
+    # If GITHUB_OUTPUT is not set we are running outside GitHub Actions (e.g.
+    # local testing); just print the value for visibility.
     else:
-        print(f"::set-output name={name}::{value}")
+        print(f"[local] output {name}={value}")
 
 
 if __name__ == "__main__":
