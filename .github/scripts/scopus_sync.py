@@ -84,7 +84,7 @@ def fetch_all_documents() -> list[dict]:
             "query": f"AU-ID({AUTHOR_ID})",
             "field": (
                 "eid,doi,title,publicationName,coverDate,creator,"
-                "author,citedby-count,subtype,subtypeDescription"
+                "author,citedby-count,subtype"
             ),
             "count": PAGE_SIZE,
             "start": start,
