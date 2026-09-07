@@ -150,8 +150,8 @@ def _extract_authors(entry: dict) -> str:
             author.get("ce:indexed-name", "")
             or author.get("indexed-name", "")
             or author.get("authname", "")
-            or author.get("ce:surname", "")
             or preferred_indexed
+            or author.get("ce:surname", "")
         )
         if indexed:
             return indexed
