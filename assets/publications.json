@@ -58,7 +58,7 @@
     "link": "https://doi.org/10.1002/pmh.70100",
     "pdf": "",
     "tech": ["Behavioural study"],
-    "project": "Attention", "Miscellaneous"
+    "project": ["Attention", "Miscellaneous"]
   },
   {
     "authors": "Campo, C.; Cellucci, F.; Treggiari, G.; Spedicato, G.A.; Lasaponara, S.; Conversi, D.",
