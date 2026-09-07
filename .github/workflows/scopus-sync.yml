@@ -57,12 +57,12 @@ jobs:
             echo "No changes detected in assets/publications.json — nothing to commit."
           elif git fetch --no-tags --depth=1 origin "$PR_BRANCH":"refs/remotes/origin/$PR_BRANCH" >/dev/null 2>&1 \
             && git diff --quiet "origin/$PR_BRANCH" -- assets/publications.json; then
-            if [ "$(git rev-list --right-only --count "origin/$DEFAULT_BRANCH...origin/$PR_BRANCH")" -eq 0 ]; then
+            if git diff --quiet "origin/$DEFAULT_BRANCH" "origin/$PR_BRANCH" -- assets/publications.json; then
               echo "changed=false" >> "$GITHUB_OUTPUT"
-              echo "assets/publications.json matches origin/$PR_BRANCH and PR branch has no commits ahead of $DEFAULT_BRANCH — skipping PR creation."
+              echo "assets/publications.json matches origin/$PR_BRANCH and has no net changes relative to $DEFAULT_BRANCH — skipping PR creation."
             else
               echo "changed=true" >> "$GITHUB_OUTPUT"
-              echo "assets/publications.json matches origin/$PR_BRANCH, but the PR branch is ahead of $DEFAULT_BRANCH."
+              echo "assets/publications.json matches origin/$PR_BRANCH and still differs from $DEFAULT_BRANCH."
             fi
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"

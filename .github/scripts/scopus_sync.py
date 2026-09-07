@@ -171,7 +171,14 @@ def _extract_authors(entry: dict) -> str:
     # Common Scopus Search shape: {"author": [{...}, {...}]}
     authors_field = entry.get("author")
     if isinstance(authors_field, str):
-        split_names = [part.strip() for part in authors_field.split(";")]
+        split_names = [authors_field]
+        if ";" in authors_field:
+            split_names = [part.strip() for part in authors_field.split(";")]
+        elif "," in authors_field:
+            comma_parts = [part.strip() for part in authors_field.split(",")]
+            initials_tail = re.compile(r".+\s+[A-Z](?:\.[A-Z])*\.?$")
+            if len(comma_parts) > 1 and all(initials_tail.match(p) for p in comma_parts):
+                split_names = comma_parts
         for name in split_names:
             _append_name(names, name)
     if isinstance(authors_field, dict):
