@@ -61,7 +61,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: bot/scopus-sync-publications
-          base: main
+          base: ${{ github.event.repository.default_branch }}
           commit-message: "chore(publications): sync from Scopus"
           title: "chore(publications): sync from Scopus"
           body: |

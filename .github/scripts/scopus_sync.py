@@ -123,23 +123,70 @@ def fetch_all_documents() -> list[dict]:
 # ---------------------------------------------------------------------------
 def _extract_authors(entry: dict) -> str:
     """Build a semicolon-separated authors string from the Scopus entry."""
-    # Prefer the full author list when available
-    authors_list = entry.get("author", [])
-    if isinstance(authors_list, list) and authors_list:
-        names = []
-        for a in authors_list:
-            given = a.get("given-name", "")
-            surname = a.get("surname", "")
-            if surname:
-                if given:
-                    names.append(f"{surname}, {given[0]}.")
-                else:
-                    names.append(surname)
-        if names:
-            return "; ".join(names)
-    # Fallback: creator field
+    def _clean(value: str) -> str:
+        return re.sub(r"\s+", " ", (value or "").strip())
+
+    def _name_from_author_obj(author: dict) -> str:
+        if not isinstance(author, dict):
+            return ""
+
+        indexed = _clean(
+            author.get("ce:indexed-name", "")
+            or author.get("authname", "")
+            or author.get("preferred-name", {}).get("ce:indexed-name", "")
+        )
+        if indexed:
+            return indexed
+
+        surname = _clean(author.get("surname", ""))
+        given = _clean(author.get("given-name", ""))
+        initials = _clean(author.get("initials", ""))
+
+        if surname and initials:
+            return f"{surname}, {initials}"
+        if surname and given:
+            return f"{surname}, {given[0]}."
+        return surname or given
+
+    names: list[str] = []
+
+    # Common Scopus Search shape: {"author": [{...}, {...}]}
+    authors_field = entry.get("author")
+    if isinstance(authors_field, dict):
+        authors_field = [authors_field]
+    if isinstance(authors_field, list):
+        for author in authors_field:
+            name = _name_from_author_obj(author)
+            if name:
+                names.append(name)
+
+    # Alternate shape: {"authors": {"author": [{...}]}}
+    if not names:
+        nested_authors = entry.get("authors", {})
+        if isinstance(nested_authors, dict):
+            nested_list = nested_authors.get("author")
+            if isinstance(nested_list, dict):
+                nested_list = [nested_list]
+            if isinstance(nested_list, list):
+                for author in nested_list:
+                    name = _name_from_author_obj(author)
+                    if name:
+                        names.append(name)
+
+    # De-duplicate while preserving order
+    deduped_names = list(dict.fromkeys(names))
+    if deduped_names:
+        return "; ".join(deduped_names)
+
+    # Fallback: Scopus creator field (string in most responses)
     creator = entry.get("dc:creator", "")
-    return creator
+    if isinstance(creator, str):
+        return _clean(creator)
+    if isinstance(creator, list):
+        cleaned = [_clean(c) for c in creator if isinstance(c, str) and _clean(c)]
+        if cleaned:
+            return "; ".join(cleaned)
+    return ""
 
 
 def _extract_year(entry: dict) -> int | None:
