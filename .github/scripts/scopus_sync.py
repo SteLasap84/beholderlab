@@ -172,8 +172,6 @@ def _extract_authors(entry: dict) -> str:
     authors_field = entry.get("author")
     if isinstance(authors_field, str):
         split_names = [part.strip() for part in authors_field.split(";")]
-        if len(split_names) <= 1:
-            split_names = [part.strip() for part in authors_field.split(",")]
         for name in split_names:
             _append_name(names, name)
     if isinstance(authors_field, dict):
