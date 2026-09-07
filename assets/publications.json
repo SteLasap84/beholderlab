@@ -50,15 +50,15 @@
     "project": "Miscellaneous"
   },
   {
-    "authors": "Lasaponara S.",
+    "authors": "Lasaponara S.; Scuderi, A.; Pellegrini, E.; Annarumma, L.; Piga, V.; Lo Presti, S.; Gorgoni, M.",
     "year": 2026,
     "title": "Individual Differences in Sleep Quality: Exploring the Impact of Temperament on Sleep Through Anxiety and Depression",
     "venue": "Personality and Mental Health",
     "doi": "10.1002/pmh.70100",
     "link": "https://doi.org/10.1002/pmh.70100",
     "pdf": "",
-    "tech": [],
-    "project": "Miscellaneous"
+    "tech": ["Behavioural study"],
+    "project": "Attention", "Miscellaneous"
   },
   {
     "authors": "Campo, C.; Cellucci, F.; Treggiari, G.; Spedicato, G.A.; Lasaponara, S.; Conversi, D.",
