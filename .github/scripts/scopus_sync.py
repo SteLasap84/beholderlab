@@ -126,14 +126,32 @@ def _extract_authors(entry: dict) -> str:
     def _clean(value: str) -> str:
         return re.sub(r"\s+", " ", (value or "").strip())
 
+    def _append_name(names: list[str], value: str):
+        cleaned = _clean(value)
+        if cleaned:
+            names.append(cleaned)
+
     def _name_from_author_obj(author: dict) -> str:
         if not isinstance(author, dict):
             return ""
 
+        preferred = author.get("preferred-name", {})
+        preferred_indexed = ""
+        if isinstance(preferred, dict):
+            preferred_indexed = (
+                preferred.get("ce:indexed-name", "")
+                or preferred.get("indexed-name", "")
+                or preferred.get("authname", "")
+            )
+        elif isinstance(preferred, str):
+            preferred_indexed = preferred
+
         indexed = _clean(
             author.get("ce:indexed-name", "")
+            or author.get("indexed-name", "")
             or author.get("authname", "")
-            or author.get("preferred-name", {}).get("ce:indexed-name", "")
+            or author.get("ce:surname", "")
+            or preferred_indexed
         )
         if indexed:
             return indexed
@@ -152,26 +170,40 @@ def _extract_authors(entry: dict) -> str:
 
     # Common Scopus Search shape: {"author": [{...}, {...}]}
     authors_field = entry.get("author")
+    if isinstance(authors_field, str):
+        split_names = [part.strip() for part in authors_field.split(";")]
+        if len(split_names) <= 1:
+            split_names = [part.strip() for part in authors_field.split(",")]
+        for name in split_names:
+            _append_name(names, name)
     if isinstance(authors_field, dict):
         authors_field = [authors_field]
     if isinstance(authors_field, list):
         for author in authors_field:
             name = _name_from_author_obj(author)
-            if name:
-                names.append(name)
+            _append_name(names, name)
 
     # Alternate shape: {"authors": {"author": [{...}]}}
     if not names:
         nested_authors = entry.get("authors", {})
+        if isinstance(nested_authors, list):
+            for author in nested_authors:
+                if isinstance(author, str):
+                    _append_name(names, author)
+                else:
+                    _append_name(names, _name_from_author_obj(author))
         if isinstance(nested_authors, dict):
             nested_list = nested_authors.get("author")
+            if isinstance(nested_list, str):
+                _append_name(names, nested_list)
             if isinstance(nested_list, dict):
                 nested_list = [nested_list]
             if isinstance(nested_list, list):
                 for author in nested_list:
-                    name = _name_from_author_obj(author)
-                    if name:
-                        names.append(name)
+                    if isinstance(author, str):
+                        _append_name(names, author)
+                    else:
+                        _append_name(names, _name_from_author_obj(author))
 
     # De-duplicate while preserving order
     deduped_names = list(dict.fromkeys(names))
