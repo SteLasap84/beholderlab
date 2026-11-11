@@ -31,7 +31,8 @@ body{
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:.75rem 0; }
 .brand{ display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--fg); font-weight:650; letter-spacing:.2px; }
-.brand-icon{ width:40px; height:40px; flex:none; filter:drop-shadow(0 2px 8px rgba(0,212,255,.18)); }
+.logo{ width:40px; height:40px; filter:drop-shadow(0 2px 8px rgba(0,212,255,.18)); }
+.brand-icon{ flex:none; }
 .brand-wordmark{ width:clamp(112px, 13vw, 150px); max-width:32vw; height:auto; }
 
 .nav{ display:flex; gap:1rem; list-style:none; margin:0; padding:0; }
