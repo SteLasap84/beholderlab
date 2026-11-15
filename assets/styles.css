@@ -379,11 +379,6 @@ body{
   }
 }
 
-.media-card-image-poster{
-  aspect-ratio: 2 / 3;
-  object-fit: contain;
-}
-
 .media-card-link{
   text-decoration: none;
   color: inherit;
