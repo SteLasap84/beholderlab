@@ -323,6 +323,10 @@ body{
   border-bottom: 1px solid var(--card-border);
 }
 
+.media-card-image-poster{
+  object-position: top;
+}
+
 .media-card-content{
   padding: 1rem 1.1rem 1.1rem;
   display: flex;
