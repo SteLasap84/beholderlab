@@ -89,6 +89,14 @@
   <div id="lp-dots" class="lp-dots" aria-label="Publication indicators" hidden></div>
 </section>
 
+<section class="latest-pub">
+  <h2>Latest News</h2>
+  <div id="latest-news-card" class="latest-pub-card">
+    <p class="lp-loading">Loading latest news…</p>
+  </div>
+  <div id="ln-dots" class="lp-dots" aria-label="News indicators" hidden></div>
+</section>
+
 <section class="cards">
   <article class="card">
     <h2>People</h2>
@@ -114,7 +122,6 @@
     <p><a href="/contact.html">Contact</a> • <a href="mailto:stefano.lasaponara@uniroma1.it">stefano.lasaponara@uniroma1.it</a></p>
   </div>
 </footer>
-<script defer src="assets/script.js"></script>
 <script>
 (function(){
   var card = document.getElementById('latest-pub-card');
@@ -208,6 +215,93 @@
     card.innerHTML='<p class="lp-loading">Unable to load latest publication.</p>'+
       '<a href="/publications.html" class="lp-link">See all publications \u2192</a>';
   });
+})();
+</script>
+<script>
+(function(){
+  var card = document.getElementById('latest-news-card');
+  var dotsEl = document.getElementById('ln-dots');
+  var section = card ? card.closest('section') : null;
+  if(!card) return;
+
+  var news = [
+    {
+      label: 'Conference • 20–22 November 2026',
+      title: 'The Beholder Lab team invited to Credition',
+      description: 'Prof. Stefano Lasaponara will present “Don’t stop believing”: Decoding belief dynamics in the brain: An ALE meta-analysis of neural correlates in belief formation and updating. Dr. Valentina Piga and Dr. Martin Motylicki will present posters on egocentric and allocentric belief updating, and on belief updating and reinforcement learning in the context of fake-news information.',
+      link: 'https://credition.uni-graz.at/en/credition/latest-news/',
+      linkText: 'About the conference'
+    },
+    {
+      label: 'Team news',
+      title: 'Martin Motylicki joins the lab as a PhD student',
+      description: 'Martin Motylicki has won the competitive selection for the PhD programme in Behavioural Neuroscience and officially joins Beholder Lab as a doctoral student.',
+      link: '/people.html',
+      linkText: 'Meet the team'
+    }
+  ];
+  var current = 0;
+  var timer = null;
+  var paused = false;
+
+  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+  function renderCurrent(){
+    var item = news[current];
+    var external = /^https?:\/\//i.test(item.link);
+    card.innerHTML = '<p class="lp-meta">'+escHtml(item.label)+'</p>'+
+      '<p class="lp-title"><a href="'+escHtml(item.link)+'"'+(external ? ' target="_blank" rel="noopener noreferrer"' : '')+'>'+escHtml(item.title)+'</a></p>'+
+      '<p class="lp-authors">'+escHtml(item.description)+'</p>'+
+      '<a href="'+escHtml(item.link)+'" class="lp-link"'+(external ? ' target="_blank" rel="noopener noreferrer"' : '')+'>'+escHtml(item.linkText)+' \u2192</a>';
+    if(dotsEl){
+      var btns = dotsEl.querySelectorAll('button');
+      for(var i=0;i<btns.length;i++){
+        var active = i === current;
+        btns[i].classList.toggle('lp-dot-active', active);
+        btns[i].setAttribute('aria-current', active ? 'true' : 'false');
+      }
+    }
+  }
+
+  function startRotation(){
+    if(news.length <= 1 || timer || paused) return;
+    timer = setInterval(function(){
+      current = (current + 1) % news.length;
+      renderCurrent();
+    }, 5000);
+  }
+
+  function stopRotation(){
+    if(timer){ clearInterval(timer); timer = null; }
+  }
+
+  function goTo(i){
+    stopRotation();
+    current = i;
+    renderCurrent();
+    startRotation();
+  }
+
+  renderCurrent();
+  if(dotsEl && news.length > 1){
+    dotsEl.hidden = false;
+    dotsEl.innerHTML = '';
+    news.forEach(function(item,i){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'lp-dot' + (i===0 ? ' lp-dot-active' : '');
+      btn.setAttribute('aria-label', 'Show news item '+(i+1));
+      btn.setAttribute('aria-current', i===0 ? 'true' : 'false');
+      btn.addEventListener('click', function(){ goTo(i); });
+      dotsEl.appendChild(btn);
+    });
+  }
+
+  if(section){
+    section.addEventListener('mouseenter', function(){ paused = true; stopRotation(); });
+    section.addEventListener('mouseleave', function(){ paused = false; startRotation(); });
+  }
+  startRotation();
 })();
 </script>
 </body>
