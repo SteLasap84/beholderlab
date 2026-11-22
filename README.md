@@ -7,8 +7,8 @@ This is a ready‑to‑deploy static website for Beholder Lab.
 2. Upload these files to the repo root.
 3. Add a file named `CNAME` (no extension) that contains your domain: `beholderlab.it`
    - If you prefer `.com`, put `beholderlab.com` instead.
-4. Add a file named `.nojekyll` (empty) to disable Jekyll auto-processing.
-5. In the repo: **Settings → Pages → Build and deployment** → Source: `Deploy from a branch`, Branch: `main`, Folder: `/ (root)`.
+4. In the repo: **Settings → Pages → Build and deployment** → Source: `GitHub Actions`.
+5. Push to `main` or run the **Deploy website** workflow from the Actions tab.
 6. Wait for the site to build. It will be available at `https://<username>.github.io/<repo>/` and on your domain once DNS is set.
 
 ## Custom domain (DNS)
@@ -29,6 +29,30 @@ The contact page includes a static form with `data-netlify="true"`. It will work
 - Update text in the HTML files (Home, People, Research, Publications, Media, Contact).
 - Replace `/assets/logo-placeholder.svg` with your real logo and update `<img>` if needed.
 - Add publications in `publications.html` under `<ul class="publist">`.
+
+## Photo gallery
+
+Add photos to `photo-gallery/LabLife/` for the general album. To create an event
+album, add a new folder directly inside `photo-gallery/`, such as
+`photo-gallery/Conference-Rome-2026/`, and upload photos into it. The folder name
+becomes the album title, with hyphens and underscores displayed as spaces.
+Photos must be directly inside the album folder (not in nested folders).
+
+Supported formats are JPG, JPEG, PNG, WebP, GIF and AVIF. Albums and photos are
+ordered by filename; the first photo is the album cover. Rename files to change
+their order. Empty albums are shown if their folder is tracked (Git does not
+track empty folders, so `LabLife` contains a `.gitkeep` file). Deleting or
+renaming a folder or photo updates the gallery on the next deployment.
+
+Every push to `main` runs the **Deploy website** workflow, which generates the
+gallery index and publishes the site. Uploading photos to another branch or
+only to your computer does not publish them. GitHub Pages must use **GitHub
+Actions** as its source as described above; the existing branch-based source
+does not generate the index. To preview changes locally, run
+`python3 .github/scripts/build_gallery.py` and serve the repository with
+`python3 -m http.server`. The generated `assets/gallery.json` is rebuilt during
+deployment and does not need to be committed when photos change. Only publish
+photos you have permission to share.
 
 ## Scopus publications sync
 
@@ -57,6 +81,5 @@ The workflow runs **every Monday at 01:00 UTC** (cron: `0 1 * * 1`).
 The workflow will run immediately and open a PR if new publications are found.
 
 ## Developer notes
-- No build step: pure HTML/CSS/JS.
-- `.nojekyll` prevents Jekyll from interfering with asset paths.
+- The site is static HTML/CSS/JS; the Pages workflow generates the gallery index.
 - If you later want a CMS, consider moving to Netlify and wiring Netlify CMS.
