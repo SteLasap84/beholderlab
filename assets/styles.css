@@ -46,6 +46,54 @@ body{
   .nav-toggle{ display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .7rem; border:1px solid var(--card-border); border-radius:.6rem; background:#0f1420; color:var(--fg); }
 }
 
+/* Cookie consent */
+.cookie-banner{
+  position:fixed;
+  z-index:100;
+  left:1rem;
+  right:1rem;
+  bottom:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.25rem;
+  max-width:1100px;
+  margin:0 auto;
+  padding:1rem 1.25rem;
+  border:1px solid var(--card-border);
+  border-radius:.9rem;
+  background:rgba(18,23,34,.98);
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+}
+.cookie-banner-copy strong{ display:block; }
+.cookie-banner-copy p{ margin:.15rem 0 0; color:var(--muted); }
+.cookie-banner-actions{ display:flex; flex:none; gap:.65rem; }
+.cookie-btn,.cookie-manage{
+  border:1px solid var(--card-border);
+  border-radius:.6rem;
+  padding:.55rem .85rem;
+  color:var(--fg);
+  background:#0f1420;
+  cursor:pointer;
+}
+.cookie-btn-primary{ border-color:var(--accent); background:var(--accent); color:#08202a; font-weight:700; }
+.cookie-btn:hover,.cookie-manage:hover{ filter:brightness(1.08); }
+.cookie-manage{
+  position:fixed;
+  z-index:99;
+  right:1rem;
+  bottom:1rem;
+  padding:.45rem .7rem;
+  font-size:.85rem;
+}
+.cookie-banner~.cookie-manage{ bottom:auto; }
+@media (max-width:760px){
+  .cookie-banner{ align-items:flex-start; flex-direction:column; }
+  .cookie-banner-actions{ width:100%; }
+  .cookie-btn{ flex:1; }
+  .cookie-manage{ bottom:.5rem; right:.5rem; }
+}
+
 /* ---------- HERO ANIMATA ---------- */
 .hero{
   position:relative;

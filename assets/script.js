@@ -20,6 +20,83 @@ document.querySelectorAll('.nav a').forEach(a => {
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
+// Gestione consenso Google Analytics
+(function(){
+  const storageKey = 'beholderlab_cookie_consent';
+  let consent = null;
+  try {
+    consent = localStorage.getItem(storageKey);
+  } catch (_) {}
+
+  function setConsent(choice) {
+    const granted = choice === 'granted';
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: granted ? 'granted' : 'denied'
+      });
+    }
+    try {
+      localStorage.setItem(storageKey, choice);
+    } catch (_) {}
+  }
+
+  if (consent === 'granted' || consent === 'denied') {
+    setConsent(consent);
+  }
+
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Preferenze cookie');
+  banner.innerHTML = `
+    <div class="cookie-banner-copy">
+      <strong>Cookie e privacy</strong>
+      <p>Usiamo Google Analytics per statistiche aggregate sulle visite. Puoi accettare o rifiutare i cookie di analisi.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-secondary" data-consent="denied">Rifiuta</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" data-consent="granted">Accetta</button>
+    </div>
+  `;
+
+  const manageButton = document.createElement('button');
+  manageButton.type = 'button';
+  manageButton.className = 'cookie-manage';
+  manageButton.textContent = 'Cookie';
+  manageButton.setAttribute('aria-label', 'Gestisci le preferenze cookie');
+
+  function closeBanner() {
+    banner.remove();
+    manageButton.hidden = false;
+  }
+
+  banner.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-consent]');
+    if (!button) return;
+    setConsent(button.dataset.consent);
+    closeBanner();
+  });
+
+  manageButton.addEventListener('click', () => {
+    if (document.body.contains(banner)) {
+      banner.remove();
+      manageButton.hidden = false;
+    } else {
+      document.body.appendChild(banner);
+      manageButton.hidden = true;
+    }
+  });
+
+  document.body.appendChild(manageButton);
+  if (!consent) {
+    document.body.appendChild(banner);
+    manageButton.hidden = true;
+  }
+})();
+
 // --- Neural particles (light density, moderate speed) ---
 (function(){
   const canvas = document.getElementById('neural-bg');
