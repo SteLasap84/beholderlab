@@ -1,6 +1,50 @@
 (function () {
   const gallery = document.getElementById('gallery');
+  const viewer = document.querySelector('.gallery-viewer');
+  const viewerImage = viewer.querySelector('.gallery-viewer-image');
+  const viewerCount = viewer.querySelector('.gallery-viewer-count');
+  const previous = viewer.querySelector('.gallery-viewer-prev');
+  const next = viewer.querySelector('.gallery-viewer-next');
   let albums = [];
+  let currentAlbum;
+  let currentPhoto = 0;
+  let touchStartX;
+
+  function showPhoto(index) {
+    currentPhoto = (index + currentAlbum.photos.length) % currentAlbum.photos.length;
+    viewerImage.src = currentAlbum.photos[currentPhoto];
+    viewerImage.alt = `${currentAlbum.title} – photo ${currentPhoto + 1}`;
+    viewerCount.textContent = `${currentPhoto + 1} / ${currentAlbum.photos.length}`;
+  }
+
+  function openViewer(album, index) {
+    currentAlbum = album;
+    previous.hidden = next.hidden = album.photos.length < 2;
+    showPhoto(index);
+    viewer.showModal();
+  }
+
+  viewer.querySelector('.gallery-viewer-close').addEventListener('click', () => viewer.close());
+  previous.addEventListener('click', () => showPhoto(currentPhoto - 1));
+  next.addEventListener('click', () => showPhoto(currentPhoto + 1));
+  viewer.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      showPhoto(currentPhoto + (event.key === 'ArrowLeft' ? -1 : 1));
+    }
+  });
+  viewerImage.addEventListener('touchstart', event => {
+    touchStartX = event.touches.length === 1 ? event.touches[0].clientX : undefined;
+  }, {passive: true});
+  viewerImage.addEventListener('touchend', event => {
+    if (touchStartX === undefined || event.changedTouches.length !== 1) return;
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    touchStartX = undefined;
+    if (Math.abs(distance) > 50) showPhoto(currentPhoto + (distance > 0 ? -1 : 1));
+  }, {passive: true});
+  window.addEventListener('hashchange', () => {
+    if (viewer.open) viewer.close();
+  });
 
   function image(src, alt) {
     const img = document.createElement('img');
@@ -43,6 +87,11 @@
         const link = document.createElement('a');
         link.href = photo;
         link.append(image(photo, `${album.title} – photo ${index + 1}`));
+        link.addEventListener('click', event => {
+          if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          openViewer(album, index);
+        });
         grid.append(link);
       });
       gallery.append(grid);

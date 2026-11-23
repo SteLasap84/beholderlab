@@ -15,7 +15,7 @@
   <meta name="twitter:description" content="Explore photos of Beholder Lab events and life in the lab.">
   <meta name="twitter:image" content="https://beholderlab.it/assets/beholderlogo.svg">
   <link rel="icon" type="image/svg+xml" href="/assets/beholderlogo.svg">
-  <link rel="stylesheet" href="/assets/styles.css?v=2">
+  <link rel="stylesheet" href="/assets/styles.css?v=3">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D3V5E3Z25"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -30,7 +30,7 @@
     gtag('config', 'G-0D3V5E3Z25');
   </script>
   <script defer src="/assets/script.js"></script>
-  <script defer src="/assets/gallery.js"></script>
+  <script defer src="/assets/gallery.js?v=2"></script>
 </head>
 <body>
 <header class="site-header">
@@ -62,6 +62,14 @@
   </div>
   <noscript><p>JavaScript is required to view the photo gallery.</p></noscript>
 </main>
+
+<dialog class="gallery-viewer" aria-label="Photo viewer">
+  <button type="button" class="gallery-viewer-close" aria-label="Close photo viewer" autofocus>×</button>
+  <button type="button" class="gallery-viewer-prev" aria-label="Previous photo">‹</button>
+  <img class="gallery-viewer-image" alt="">
+  <button type="button" class="gallery-viewer-next" aria-label="Next photo">›</button>
+  <p class="gallery-viewer-count" aria-live="polite"></p>
+</dialog>
 
 <footer class="site-footer">
   <div class="container footer-inner">
